@@ -2,30 +2,20 @@
 
 
 {% block main %}
-  <main>
+  <h1>{{post.title}}</h1>
 
-    <h1>{{post.title}}</h1>
+  {% if articles %}
 
-    {% if articles %}
+    <ul class="article-list">
+      {% for article in articles %}
+        {% include '/components/article/article-list.twig' %}
+      {% endfor %}
+    </ul>
 
-      <ul class="article-list">
-        {% for article in articles %}
-          {% include '/components/article/article-list.twig' %}
-        {% endfor %}
-      </ul>
+  {% else %}
 
-    {% else %}
+    <h2>No articles present</h2>
 
-      <h2>No articles present</h2>
+  {% endif %}
 
-    {% endif %}
-
-</main>
-{% endblock %}
-
-
-{% block sidebar %}
-  <aside>
-    <h2>Sidebar</h2>
-  </aside>
 {% endblock %}
