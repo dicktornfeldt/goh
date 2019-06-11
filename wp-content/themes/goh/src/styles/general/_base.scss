@@ -1,0 +1,69 @@
+html {
+  font-family: $font;
+  font-size: 62.5%;
+  overflow-y: scroll;
+  box-sizing: border-box;
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  text-rendering: optimizeLegibility;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-size: 1.6rem;
+  font-weight: normal;
+  line-height: 1.5;
+  height: 100%;
+  margin: 0;
+  background-color: $bone;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  user-select: none;
+}
+
+a {
+  transition: all 0.15s ease;
+  text-decoration: none;
+  color: inherit;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+#app {
+  max-width: 128rem;
+  margin: auto;
+  padding: 0 2rem;
+  @media (min-width: $small) {
+    display: flex;
+  }
+}
+
+main {
+  margin: 0 0 2rem 0;
+  @media (min-width: $small) {
+    flex: 3;
+    margin: 0;
+  }
+}
+
+aside {
+  @media (min-width: $small) {
+    flex: 1;
+  }
+}

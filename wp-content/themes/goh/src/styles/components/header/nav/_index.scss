@@ -1,0 +1,14 @@
+.menu-wrapper {
+  background-color: $darkbone;
+  .menu-innerwrapper {
+    max-width: 128rem;
+    margin: auto;
+    padding: 0 2rem;
+  }
+}
+
+nav {
+  li {
+    list-style: none;
+  }
+}

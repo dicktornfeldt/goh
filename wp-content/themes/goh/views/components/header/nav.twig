@@ -1,0 +1,13 @@
+<div class="menu-wrapper">
+  <div class="menu-innerwrapper">
+    <nav>
+      <ul>
+      {% for item in primary_navigation.get_items %}
+        <li class="{{ item.class }}">
+          <a href="{{ item.link }}">{{ item.title }}</a>
+        </li>
+      {% endfor %}
+      </ul>
+    </nav>
+  </div>
+</div>

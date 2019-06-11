@@ -1,0 +1,20 @@
+{% extends 'base.twig' %}
+
+{% block main %}
+  <main>
+    <h1>{{post.title}}</h1>
+
+    {% if post.thumbnail %}
+      <img src="{{post.thumbnail.src}}" alt="{{post.thumbnail.alt}}">
+    {% endif %}
+
+    <p>{{post.test}}</p>
+  </main>
+{% endblock %}
+
+
+{% block sidebar %}
+  <aside>
+    <h2>Sidebar</h2>
+  </aside>
+{% endblock %}

@@ -1,0 +1,16 @@
+# -----------------------------------------------------------------
+# Ignore for Deploy HQ
+# https://support.deployhq.com/articles/advanced-settings/deployignore
+# -----------------------------------------------------------------
+ 
+## Directories to ignore  
+# log/** 
+# config/**  
+
+## Files to ignore  
+package.json
+gulpfile.js
+gulpfile.babel.js
+README.md
+.eslintrc.js
+.babelrc

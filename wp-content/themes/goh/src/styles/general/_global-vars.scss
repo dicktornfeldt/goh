@@ -1,0 +1,23 @@
+// Fonts
+// -------------------------
+@font-face {
+  font-family: "OpenSans";
+  font-weight: normal;
+  font-style: normal;
+  src: url("fonts/OpenSans-Regular.woff2") format("woff2");
+  src: url("fonts/OpenSans-Regular.woff") format("woff");
+}
+
+$font: "OpenSans";
+
+// Media queries
+// -------------------------
+$small: 550px;
+$medium: 768px;
+$large: 1024px;
+$xlarge: 1280px;
+
+// Colors
+// -------------------------
+$bone: #fff8f1;
+$darkbone: #f7ede3;

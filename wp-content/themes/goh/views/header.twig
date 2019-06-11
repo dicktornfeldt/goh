@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html {{site.language_attributes}}>
+
+  <head>
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#00695C">
+
+    <link rel="pingback" href="{{ site.pingback_url }}"/>
+
+     {# Favicon and iPhone Web App Home Screen Icon #}
+    <link rel="icon" href="{{ site.theme.link }}/src/images/favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{ site.theme.link }}/src/images/favicon/apple-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="{{ site.theme.link }}/src/images/favicon/apple-icon-114x114.png"/>
+    <link rel="apple-touch-icon" href="{{ site.theme.link }}/src/images/favicon/apple-icon.png"/>
+
+    {{ function('wp_head') }}
+  </head>
+
+  <body class="{{ body_class }}">
+    <header>
+      {% include 'components/header/toolbar.twig' %}
+      {% include 'components/header/nav.twig' %}
+    </header>

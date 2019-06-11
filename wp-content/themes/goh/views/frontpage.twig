@@ -1,0 +1,31 @@
+{% extends 'base.twig' %}
+
+
+{% block main %}
+  <main>
+
+    <h1>{{post.title}}</h1>
+
+    {% if articles %}
+
+      <ul class="article-list">
+        {% for article in articles %}
+          {% include '/components/article/article-list.twig' %}
+        {% endfor %}
+      </ul>
+
+    {% else %}
+
+      <h2>No articles present</h2>
+
+    {% endif %}
+
+</main>
+{% endblock %}
+
+
+{% block sidebar %}
+  <aside>
+    <h2>Sidebar</h2>
+  </aside>
+{% endblock %}
