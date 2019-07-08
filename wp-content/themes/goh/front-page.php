@@ -3,14 +3,14 @@
 // get Timber context
 $context = Timber::get_context();
 
-// adds posts to the $context
-$args = array(
-  'post_type'      => 'post',
-  'posts_per_page' => -1,
-);
-$context['articles'] = Timber::get_posts($args);
 
-//adds the current post to the $context
-$context['post'] = Timber::get_post();
+$args = [
+  'post_type'      => 'post',
+  'post_status'    => 'publish',
+  'posts_per_page' => 5,
+];
+$frontpage_posts = Timber::get_posts($args);
+$context['posts'] = $frontpage_posts;
+
 
 Timber::render('frontpage.twig', $context);

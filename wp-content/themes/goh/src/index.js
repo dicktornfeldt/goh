@@ -4,6 +4,7 @@ import "./style.scss";
 import Router from "./javascripts/util/Router";
 import common from "./javascripts/routes/common";
 import home from "./javascripts/routes/home";
+import roster from "./javascripts/routes/roster";
 import mittKonto from "./javascripts/routes/my-account";
 
 /**
@@ -13,6 +14,7 @@ import mittKonto from "./javascripts/routes/my-account";
 const routes = new Router({
   common,
   home,
+  roster,
   mittKonto
 });
 

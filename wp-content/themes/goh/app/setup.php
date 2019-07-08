@@ -110,10 +110,6 @@ function remove_default_image_sizes($sizes)
   unset($sizes['medium']);          // Remove Medium resolution (300 x 300 max height 300px)
   unset($sizes['medium_large']);    // Remove Medium Large (added in WP 4.4) resolution (768 x 0 infinite height)
   unset($sizes['large']);           // Remove Large resolution (1024 x 1024 max height 1024px)
-  /* With WooCommerce */
-  unset($sizes['shop_thumbnail']);  // Remove Shop thumbnail (180 x 180 hard cropped)
-  unset($sizes['shop_catalog']);    // Remove Shop catalog (300 x 300 hard cropped)
-  unset($sizes['shop_single']);     // Shop single (600 x 600 hard cropped)
   return $sizes;
 }
 add_filter('intermediate_image_sizes_advanced', 'remove_default_image_sizes');
@@ -125,6 +121,48 @@ add_filter('intermediate_image_sizes_advanced', 'remove_default_image_sizes');
 add_filter('timber/context', 'add_to_context');
 function add_to_context($context)
 {
-  $context['primary_navigation'] =  new Timber\Menu('primary_navigation');
+  $context['primary_navigation'] = new Timber\Menu('primary_navigation');
+  $context['post']               = new Timber\Post();
+  $context['current_user']       = new Timber\User();
+
   return $context;
 }
+
+
+/**
+ * Changes the author base slug
+ */
+add_action('init', 'author_base_slug');
+function author_base_slug()
+{
+  global $wp_rewrite;
+  $author_slug = 'pres'; // change slug name
+  $wp_rewrite->author_base = $author_slug;
+  $wp_rewrite->flush_rules();
+}
+
+
+/**
+ * Remove unused user roles from user role dropdowns
+ *
+ * @return void
+ */
+add_action('init', 'remove_unused_user_roles');
+function remove_unused_user_roles()
+{
+  remove_role('author');
+  remove_role('editor');
+  remove_role('wpseo_editor');
+  remove_role('wpseo_manager');
+  remove_role('contributor');
+}
+
+
+/**
+ * Style login page
+ */
+function my_login_stylesheet()
+{
+  wp_enqueue_style('custom-login', get_stylesheet_directory_uri() . '/build/bundle.css');
+}
+add_action('login_enqueue_scripts', 'my_login_stylesheet');

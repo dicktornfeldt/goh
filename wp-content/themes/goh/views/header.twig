@@ -22,5 +22,9 @@
 
   <body class="{{ body_class }}">
     <header>
-      {% include 'components/header/nav.twig' %}
+
+    <a href="{{ site.url }}">
+      <img class="Logo" src="{{ site.theme.link }}/src/images/goh.png" alt="Gammal och Horde logo">
+    </a>
+      {% include 'components/header/menu.twig' %}
     </header>

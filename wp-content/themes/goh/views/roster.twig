@@ -1,0 +1,32 @@
+{% extends 'base.twig' %}
+
+{% block main %}
+
+    <section id="roster">
+      <input type="text" class="search" placeholder="Sök..." />
+      <table class="Table">
+        <thead class="Table__head">
+          <tr class="Table__head__tr">
+            <th class="sort Table__head__th" data-sort="nick">Nick</th>
+            <th class="sort Table__head__th" data-sort="class">Klass</th>
+            <th class="sort Table__head__th" data-sort="race">Ras</th>
+          </tr>
+        </thead>
+        <tbody class="list Table__body">
+
+        {% for user in users %}
+
+          <tr class="Table__tr">
+            <td class="nick Table__td"><a href="/pres/{{ user.user_nicename }}">{{ user.nick }}</a></td>
+            <td class="class Table__td {{ user.class }}">{{ user.class }}</td>
+            <td class="race Table__td {{ user.race }}">{{ user.race }}</td>
+          </tr>
+
+        {% endfor %}
+
+        </tbody>
+      </table>
+    </section>
+
+
+{% endblock %}

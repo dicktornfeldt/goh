@@ -1,0 +1,13 @@
+{% extends 'base.twig' %}
+
+{# Article content #}
+{% block main %}
+  <section>
+    <article>
+      {# Article title #}
+      <h1>{{ post.title }}</h1>
+      {{post.date}}
+      {{post.content}}
+    </article>
+  </section>
+{% endblock %}

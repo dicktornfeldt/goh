@@ -1,14 +1,19 @@
-.menu-wrapper {
-  background-color: $darkbone;
-  .menu-innerwrapper {
-    max-width: 128rem;
-    margin: auto;
-    padding: 0 2rem;
+nav {
+  font-family: $font2;
+  font-size: 1.4rem;
+  float: right;
+  margin-top: 5rem;
+  text-transform: uppercase;
+  color: $primary;
+  a {
+    margin: 0 0 0 2rem;
   }
 }
 
-nav {
-  li {
-    list-style: none;
+.NAV__separetad {
+  margin: 0 0 0 2.5rem;
+  &::before {
+    content: "|";
+    margin: 0 2.5rem 0 0;
   }
 }

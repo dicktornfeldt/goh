@@ -1,0 +1,9 @@
+<article class="ArticleCard">
+  <small class="ArticleCard__date">{{ post.date }}</small>
+  <h2 class="ArticleCard__header">
+    <a href="{{ post.link }}">
+      {{ post.title }}
+    </a>
+  </h2>
+  <p class="ArticleCard__preamble">{{ post.post_content|truncate(10)}}</p>
+</article>

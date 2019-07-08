@@ -8,7 +8,16 @@
   src: url("fonts/OpenSans-Regular.woff") format("woff");
 }
 
+@font-face {
+  font-family: "Roboto";
+  font-weight: normal;
+  font-style: normal;
+  src: url("fonts/Roboto-Bold.woff2") format("woff2");
+  src: url("fonts/Roboto-Bold.woff") format("woff");
+}
+
 $font: "OpenSans";
+$font2: "Roboto";
 
 // Media queries
 // -------------------------
@@ -19,5 +28,14 @@ $xlarge: 1280px;
 
 // Colors
 // -------------------------
-$bone: #fff8f1;
-$darkbone: #f7ede3;
+$white: #ebdec2;
+$black: #1a1a1a;
+$primary: #ffa71b;
+$druid: #ff7d0a;
+$priest: white;
+$warlock: #8787ed;
+$warrior: #c79c6e;
+$shaman: #f58cba;
+$rogue: #fff569;
+$hunter: #abd473;
+$mage: #40c7eb;

@@ -2,20 +2,14 @@
 
 
 {% block main %}
-  <h1>{{post.title}}</h1>
+<section>
+  <img class="MainLogo" src="{{ site.theme.link }}/src/images/goh-ordbild.png" alt="Gammal och Horde">
 
-  {% if articles %}
+  <h2 class="MainHeading">{{ site.description }}</h2>
 
-    <ul class="article-list">
-      {% for article in articles %}
-        {% include '/components/article/article-list.twig' %}
-      {% endfor %}
-    </ul>
-
-  {% else %}
-
-    <h2>No articles present</h2>
-
-  {% endif %}
-
+  {# Loop through articles #}
+  {% for post in posts %}
+    {% include '/components/posts/post-item.twig' %}
+  {% endfor %}
+</section>
 {% endblock %}

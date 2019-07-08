@@ -1,0 +1,21 @@
+.ArticleCard {
+  margin: 0 auto 3rem auto;
+  max-width: 50rem;
+  padding: 0 0 1.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  &:last-of-type {
+    border-bottom: none;
+  }
+}
+.ArticleCard__date {
+  text-transform: uppercase;
+  font-family: $font2;
+}
+.ArticleCard__header {
+  color: $primary;
+  margin: 0;
+  font-family: $font2;
+}
+.ArticleCard__preamble {
+  margin: 0;
+}

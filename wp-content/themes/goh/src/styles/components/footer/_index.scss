@@ -1,5 +1,15 @@
 footer {
-  max-width: 128rem;
   margin: auto;
-  padding: 0 2rem;
+  padding: 4rem 1.5rem 7rem 1.5rem;
+  background-color: darken($black, 7%);
+  text-align: center;
+  a {
+    font-size: 1.4rem;
+    color: $primary;
+  }
+  small {
+    display: block;
+    margin: 1rem 0 0 0;
+    color: lighten($black, 10%);
+  }
 }

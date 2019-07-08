@@ -1,0 +1,79 @@
+.Table {
+  font-family: $font2;
+  width: 100%;
+  font-size: 1.4rem;
+  overflow: hidden;
+  border-spacing: 0;
+  text-align: left;
+  color: $black;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: white;
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.6);
+  a:hover {
+    text-decoration: underline;
+    color: $black;
+  }
+}
+.Table__head {
+  color: white;
+  background-color: $primary;
+}
+.Table__head__th {
+  font-size: 1.3rem;
+  padding: 0.7rem 1rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  &:hover {
+    background-color: lighten($primary, 5%);
+  }
+  &:first-child {
+    padding-left: 1.5rem;
+  }
+  &:last-child {
+    padding-right: 1.5rem;
+  }
+  &.desc,
+  &.asc {
+    text-decoration: underline;
+  }
+}
+
+.Table__tr {
+  &:nth-child(even) {
+    background-color: darken(white, 5%);
+  }
+}
+.Table__td {
+  padding: 0.7rem 1rem;
+  &:first-child {
+    padding-left: 1.5rem;
+  }
+  &:last-child {
+    padding-right: 1.5rem;
+  }
+  &.Priest {
+    border-bottom: 0.5rem solid $priest;
+  }
+  &.Druid {
+    border-bottom: 0.5rem solid $druid;
+  }
+  &.Warrior {
+    border-bottom: 0.5rem solid $warrior;
+  }
+  &.Shaman {
+    border-bottom: 0.5rem solid $shaman;
+  }
+  &.Hunter {
+    border-bottom: 0.5rem solid $hunter;
+  }
+  &.Rogue {
+    border-bottom: 0.5rem solid $rogue;
+  }
+  &.Warlock {
+    border-bottom: 0.5rem solid $warlock;
+  }
+  &.Mage {
+    border-bottom: 0.5rem solid $mage;
+  }
+}
