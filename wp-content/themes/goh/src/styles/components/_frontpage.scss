@@ -1,0 +1,33 @@
+.MainHeading {
+  font-family: $font2;
+  max-width: 60rem;
+  margin: auto auto 4rem auto;
+  text-align: center;
+}
+
+.Page__wrapper--home {
+  max-width: 106rem;
+  @extend .Page__wrapper;
+  h1 {
+    font-family: $font2;
+    font-size: 2.9rem;
+    line-height: 3.9rem;
+    margin: 0 0 1rem 0;
+    text-align: left;
+    text-transform: uppercase;
+    color: $primary;
+    @media (min-width: $medium) {
+      font-size: 4rem;
+      line-height: 5rem;
+    }
+  }
+  .ContentSidebar {
+    @media (min-width: $medium) {
+      width: 50%;
+    }
+  }
+}
+
+.Preamble {
+  font-size: 115%;
+}

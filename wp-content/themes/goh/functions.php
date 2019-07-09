@@ -12,6 +12,12 @@
 $function_includes = [
   'app/setup.php', // Theme setup
   // 'app/wp_mail_smtp.php' // Handle all mails sent from site
+
+  /**
+   * Handle AJAX requests
+   */
+  'app/WP_Ajax/WP_Ajax.php',                // Class for handling WP AJAX calls
+  'app/WP_Ajax/ajax-requests/autoload.php', // All AJAX Classes
 ];
 
 foreach ($function_includes as $file) {

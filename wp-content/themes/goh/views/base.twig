@@ -1,10 +1,10 @@
-{% include 'header.twig' %}
+<div id="app">
+  {% include 'header.twig' %}
 
+  <main>
+    {% block main %}
+    {% endblock %}
+  </main>
 
-<main>
-  {% block main %}
-  {% endblock %}
-</main>
-
-
-{% include 'footer.twig' %}
+  {% include 'footer.twig' %}
+</div>

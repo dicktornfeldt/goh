@@ -21,10 +21,10 @@
   </head>
 
   <body class="{{ body_class }}">
+    <aside class="SiteLoading"></aside>
     <header>
-
-    <a href="{{ site.url }}">
-      <img class="Logo" src="{{ site.theme.link }}/src/images/goh.png" alt="Gammal och Horde logo">
-    </a>
+      <a class="HeaderLogo" href="{{ site.url }}">
+        <img src="{{ site.theme.link }}/src/images/goh.png" alt="Gammal och Horde logo">
+      </a>
       {% include 'components/header/menu.twig' %}
     </header>

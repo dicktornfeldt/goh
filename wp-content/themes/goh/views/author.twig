@@ -1,10 +1,23 @@
 {% extends 'base.twig' %}
 
 {% block main %}
-  <section>
-  <pre>
-    {{dump(author)}}
-    </pre>
+   <section class="Page__wrapper">
+    <h1>{{ author.nick }} är så horde</h1>
+
+    <article class="ContentSidebar">
+    {% if author.description %}
+      <p>{{ author.description }}</p>
+    {% endif %}
+    </article>
+
+    <aside class="ContentSidebar__sidebar">
+      <dl>
+        <dt>Ras:</dt>
+        <dd>{{ author.race }}</dd>
+        <dt>Klass:</dt>
+        <dd>{{ author.class }}</dd>
+      </dl>
+    </aside>
 
   </section>
 {% endblock %}

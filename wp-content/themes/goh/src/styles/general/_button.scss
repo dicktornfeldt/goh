@@ -1,0 +1,15 @@
+.Button {
+  font-family: $font2;
+  font-size: 1.4rem;
+  padding: 1.3rem 2rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  text-transform: uppercase;
+  color: $primary;
+  border: 1px solid $primary;
+  background: rgba($black, 0.6);
+  &:hover {
+    color: white;
+    background: $primary;
+  }
+}

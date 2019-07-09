@@ -2,14 +2,20 @@
 
 
 {% block main %}
-<section>
-  <img class="MainLogo" src="{{ site.theme.link }}/src/images/goh-ordbild.png" alt="Gammal och Horde">
+<section class="Page__wrapper--home">
 
-  <h2 class="MainHeading">{{ site.description }}</h2>
+  <article class="ContentSidebar">
+    <h1>{{ site.description }}</h1>
+    <p class="Preamble">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni vitae harum ab alias inventore, maiores sapiente ipsum quam illum nostrum. Magni vitae harum ab alias inventore. Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+  </article>
 
+  <aside class="ContentSidebar__sidebar">
   {# Loop through articles #}
   {% for post in posts %}
     {% include '/components/posts/post-item.twig' %}
   {% endfor %}
+  </aside>
+
+
 </section>
 {% endblock %}

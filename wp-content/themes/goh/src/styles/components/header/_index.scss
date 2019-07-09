@@ -1,19 +1,22 @@
 @import "/nav/index";
 
 header {
-  max-width: 120rem;
+  max-width: 110rem;
   height: 4rem;
   margin: auto;
   padding: 0 1.5rem;
   text-align: center;
 }
 
-.Logo {
-  position: absolute;
-  top: auto;
-  right: 0;
-  bottom: auto;
-  left: 0;
-  width: 6rem;
-  margin: 2rem auto 0 auto;
+.HeaderLogo {
+  width: 30rem;
+  margin: 3rem auto 0 auto;
+  display: block;
+  @media (min-width: $medium) {
+    float: left;
+    width: 35rem;
+  }
+  img {
+    width: 100%;
+  }
 }

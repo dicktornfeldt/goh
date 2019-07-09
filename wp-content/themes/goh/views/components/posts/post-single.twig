@@ -1,13 +1,16 @@
 {% extends 'base.twig' %}
 
-{# Article content #}
 {% block main %}
-  <section>
-    <article>
+  <section class="Page__wrapper">
+    <article class="ArticleSingle">
+
       {# Article title #}
-      <h1>{{ post.title }}</h1>
-      {{post.date}}
-      {{post.content}}
+      <h1 class="ArticleSingle__heading">{{ post.title }}</h1>
+      {# Article date #}
+      <small class="ArticleSingle__date">{{ post.date }}</small>
+      {# Article content #}
+      {{ post.content }}
+
     </article>
   </section>
 {% endblock %}

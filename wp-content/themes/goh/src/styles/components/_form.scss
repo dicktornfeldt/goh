@@ -1,9 +1,46 @@
+textarea,
 input {
   font-size: 1.6rem;
   width: 100%;
-  padding: 0.7rem;
+  padding: 0.9rem 0.7rem;
   outline: none;
   border: none;
-  border-radius: 0.5rem;
+  border-radius: 0.3rem;
   box-shadow: 0 0 2rem rgba(0, 0, 0, 0.6);
+}
+
+textarea {
+  resize: none;
+}
+
+.Form {
+  max-width: 40rem;
+  margin: auto;
+  text-align: center;
+  .Form__inputwrapper,
+  textarea,
+  input {
+    margin: 0 0 1.5rem 0;
+  }
+  button {
+    margin: 2.5rem auto 0 auto;
+    display: block;
+  }
+  .Form__inputwrapper {
+    label {
+      margin: 0 0.5rem 0 0;
+    }
+    select {
+      margin: 0 0 0 0.5rem;
+    }
+  }
+  .Form__link {
+    margin: 1rem 0 0 0;
+    display: inline-block;
+    font-size: 1.4rem;
+    color: $primary;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }

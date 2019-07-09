@@ -1,0 +1,48 @@
+#app {
+  position: relative;
+  min-height: 100%;
+}
+
+main {
+  padding: 0 1.5rem 15rem 1.5rem;
+}
+
+.Page__wrapper {
+  max-width: 70rem;
+  margin: 11rem auto 9.5rem auto;
+  @media (min-width: $medium) {
+    margin: 9.5rem auto;
+  }
+  &:after {
+    display: block;
+    clear: both;
+    content: "";
+  }
+  h1 {
+    font-family: $font2;
+    font-size: 3rem;
+    line-height: 3.5rem;
+    text-align: center;
+    text-transform: uppercase;
+    color: $primary;
+    @media (min-width: $medium) {
+      font-size: 3.5rem;
+      line-height: 4rem;
+    }
+  }
+}
+
+.ContentSidebar {
+  margin: 0 0 6rem 0;
+  @media (min-width: $medium) {
+    display: inline-block;
+    width: 58%;
+    margin: 0;
+  }
+}
+.ContentSidebar__sidebar {
+  @media (min-width: $medium) {
+    float: right;
+    width: 40%;
+  }
+}
