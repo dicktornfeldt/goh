@@ -121,7 +121,7 @@ class SendApplication extends WP_AJAX
          * if no curl error, return response from request
          */
         $this->returnJSON([
-          'message' => $response,
+          'message' => 'success',
           'status' => 200,
         ]);
       } catch (Exception $e) {
