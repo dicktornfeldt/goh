@@ -26,8 +26,16 @@
       width: 50%;
     }
   }
+  .Form {
+    margin: 2rem 0 0 0;
+    display: none;
+    &.show {
+      display: block;
+    }
+  }
 }
 
 .Preamble {
   font-size: 115%;
+  margin: 0 0 5rem 0;
 }

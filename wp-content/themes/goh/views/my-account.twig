@@ -4,7 +4,7 @@
   <section class="Page__wrapper">
     <h1>Du är så horde {{ current_user.nick }}</h1>
 
-    <form class="Form ajax-update-user" action="#" class="ajax-update-user" method="post">
+    <form class="Form ajax-update-user" action="#" method="post">
       <input type="hidden" name="action" value="update_user">
       <input type="hidden" name="user_id" value="{{ current_user.ID }}">
 

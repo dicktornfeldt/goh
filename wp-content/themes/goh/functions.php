@@ -11,6 +11,7 @@
 
 $function_includes = [
   'app/setup.php', // Theme setup
+  'app/cpt.php', // Custom post type
   // 'app/wp_mail_smtp.php' // Handle all mails sent from site
 
   /**
