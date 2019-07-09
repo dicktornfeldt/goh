@@ -12,7 +12,7 @@
       {# Article featured image #}
       {% if post.thumbnail.src %}
         <figure class="ArticleSingle__figure">
-          <img class="ArticleSingle__img" src="{{ Image(post.thumbnail.src).src|resize(600, 350) }}" />
+          <img class="ArticleSingle__img" src="{{ Image(post.thumbnail.src).src|resize(600) }}" />
 
           {# If there is a caption #}
           {% if post.thumbnail.caption %}
