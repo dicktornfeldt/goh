@@ -19,7 +19,9 @@ export default {
           $("body").addClass("Loading");
         },
         success: function(response) {
-          window.location.reload();
+          console.log(response);
+
+          // window.location.reload();
         },
         error: function() {
           $("body").removeClass("Loading");
