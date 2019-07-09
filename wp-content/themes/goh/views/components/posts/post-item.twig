@@ -5,5 +5,19 @@
       {{ post.title }}
     </a>
   </h2>
+
+  {# Article featured image #}
+  {% if post.thumbnail.src %}
+    <figure class="ArticleCard__figure">
+      <img class="ArticleCard__img" src="{{ Image(post.thumbnail.src).src|resize(600, 350) }}" />
+
+      {# If there is a caption #}
+      {% if post.thumbnail.caption %}
+      <figcaption class="ArticleCard__caption">{{ post.thumbnail.caption }}</figcaption>
+      {% endif %}
+
+    </figure>
+  {% endif %}
+
   <p class="ArticleCard__preamble">{{ post.post_content|truncate(10)}}</p>
 </article>

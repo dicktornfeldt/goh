@@ -16,6 +16,19 @@
   margin: 0;
   color: $primary;
 }
+.ArticleCard__figure {
+  margin: 1rem 0;
+}
+.ArticleCard__img {
+  width: 100%;
+  border: 0.2rem solid $primary;
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.6);
+}
+.ArticleCard__caption {
+  font-size: 75%;
+  margin: 0.5rem 0 0 0;
+  font-style: italic;
+}
 .ArticleCard__preamble {
   margin: 0;
 }
@@ -35,4 +48,20 @@
   text-align: center;
   text-transform: uppercase;
   border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.ArticleSingle__figure {
+  @extend .ArticleCard__figure;
+  @media (min-width: $medium) {
+    max-width: 55%;
+    margin: 0 0 3rem 5%;
+    display: inline-block;
+    float: right;
+  }
+}
+.ArticleSingle__img {
+  @extend .ArticleCard__img;
+}
+.ArticleSingle__caption {
+  @extend .ArticleCard__caption;
 }

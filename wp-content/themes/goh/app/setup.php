@@ -106,7 +106,6 @@ add_action('wp_print_styles', 'wps_deregister_styles', 100);
 function remove_default_image_sizes($sizes)
 {
   /* Default WordPress */
-  unset($sizes['medium']);          // Remove Thumbnail (150 x 150 hard cropped)
   unset($sizes['medium']);          // Remove Medium resolution (300 x 300 max height 300px)
   unset($sizes['medium_large']);    // Remove Medium Large (added in WP 4.4) resolution (768 x 0 infinite height)
   unset($sizes['large']);           // Remove Large resolution (1024 x 1024 max height 1024px)
