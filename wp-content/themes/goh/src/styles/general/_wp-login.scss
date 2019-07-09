@@ -2,11 +2,13 @@ body.login {
   color: $black;
   background-color: $black;
   h1 a {
-    height: 14rem;
     background-image: url(images/goh.png);
+    margin-bottom: 1rem;
+    width: 100%;
+    max-width: 30rem;
     background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+    background-position: 50%;
+    background-size: 30rem auto;
     pointer-events: none;
   }
   a {

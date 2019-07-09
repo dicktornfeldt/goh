@@ -160,20 +160,30 @@ function remove_unused_user_roles()
 /**
  * Redirect non admins
  */
-if (is_user_logged_in() && is_admin()) {
-  global $current_user;
-  get_currentuserinfo();
-  $user_info = get_userdata($current_user->ID);
-  if ($user_info->wp_user_level == 0) {
-      header('Location: '.get_bloginfo('home').'/wp-login.php?redirect='.get_bloginfo('home').'/wp-admin/');
+
+add_action('init', 'blockusers_init');
+function blockusers_init()
+{
+  if (is_admin() && ! current_user_can('administrator') && ! (defined('DOING_AJAX') && DOING_AJAX)) {
+    wp_redirect(home_url());
+    exit;
   }
 }
+
+
+/**
+ * Remove admin bar
+ */
+add_filter('show_admin_bar', '__return_false');
+
 
 /**
  * Style login page
  */
 function my_login_stylesheet()
 {
-  wp_enqueue_style('custom-login', get_stylesheet_directory_uri() . '/build/bundle.css');
+  $manifest = json_decode(file_get_contents(dirname(dirname(__FILE__)).'/build/assets.json', true));
+  $main = $manifest->main;
+  wp_enqueue_style('custom-login', get_template_directory_uri() . "/build/" . $main->css, false, null);
 }
 add_action('login_enqueue_scripts', 'my_login_stylesheet');
