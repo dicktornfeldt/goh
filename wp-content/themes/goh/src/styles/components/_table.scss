@@ -46,34 +46,63 @@
 }
 .Table__td {
   padding: 0.7rem 1rem;
+  background-repeat: no-repeat;
+  background-position: 95% 50%;
+  background-size: 2.4rem 2.4rem;
+  a {
+    text-decoration: underline;
+  }
   &:first-child {
     padding-left: 1.5rem;
   }
   &:last-child {
     padding-right: 1.5rem;
   }
+  &:after {
+  }
   &.Priest {
-    border-bottom: 0.5rem solid $priest;
+    // border-bottom: 0.2rem solid $priest;
+    background-image: url(images/icons/priest.png);
   }
   &.Druid {
-    border-bottom: 0.5rem solid $druid;
+    // border-bottom: 0.2rem solid $druid;
+    background-image: url(images/icons/druid.png);
   }
   &.Warrior {
-    border-bottom: 0.5rem solid $warrior;
+    // border-bottom: 0.2rem solid $warrior;
+    background-image: url(images/icons/warrior.png);
   }
   &.Shaman {
-    border-bottom: 0.5rem solid $shaman;
+    // border-bottom: 0.2rem solid $shaman;
+    background-image: url(images/icons/shaman.png);
   }
   &.Hunter {
-    border-bottom: 0.5rem solid $hunter;
+    // border-bottom: 0.2rem solid $hunter;
+    background-image: url(images/icons/hunter.png);
   }
   &.Rogue {
-    border-bottom: 0.5rem solid $rogue;
+    // border-bottom: 0.2rem solid $rogue;
+    background-image: url(images/icons/rogue.png);
   }
   &.Warlock {
-    border-bottom: 0.5rem solid $warlock;
+    // border-bottom: 0.2rem solid $warlock;
+    background-image: url(images/icons/warlock.png);
   }
   &.Mage {
-    border-bottom: 0.5rem solid $mage;
+    // border-bottom: 0.2rem solid $mage;
+    background-image: url(images/icons/mage.png);
+  }
+
+  &.Orc {
+    background-image: url(images/icons/orc.png);
+  }
+  &.Tauren {
+    background-image: url(images/icons/tauren.png);
+  }
+  &.Undead {
+    background-image: url(images/icons/undead.png);
+  }
+  &.Troll {
+    background-image: url(images/icons/troll.png);
   }
 }
