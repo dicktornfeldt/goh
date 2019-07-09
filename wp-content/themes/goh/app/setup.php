@@ -157,6 +157,17 @@ function remove_unused_user_roles()
   remove_role('contributor');
 }
 
+/**
+ * Redirect non admins
+ */
+if (is_user_logged_in() && is_admin()) {
+  global $current_user;
+  get_currentuserinfo();
+  $user_info = get_userdata($current_user->ID);
+  if ($user_info->wp_user_level == 0) {
+      header('Location: '.get_bloginfo('home').'/wp-login.php?redirect='.get_bloginfo('home').'/wp-admin/');
+  }
+}
 
 /**
  * Style login page
