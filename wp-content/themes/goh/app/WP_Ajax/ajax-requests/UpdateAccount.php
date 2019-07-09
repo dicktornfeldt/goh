@@ -24,21 +24,12 @@ class UpdateAccount extends WP_AJAX
    */
   protected function run()
   {
-    if (! check_ajax_referer('update_user_token', '_wpnonce', false)) {
-      $this->returnJSON([
-        'message' => 'Token invalid',
-        'status' => 403,
-      ]);
-    }
-
-
-    $user_id = $this->get('user_id');
-    $user_nick = $this->get('user_nick');
-    $user_email = $this->get('user_email');
-    $user_desc = $this->get('user_desc');
-    $user_class = $this->get('user_class');
-    $user_race = $this->get('user_race');
-
+    $user_id = filter_var($this->get('user_id'), FILTER_SANITIZE_STRING);
+    $user_nick = filter_var($this->get('user_nick'), FILTER_SANITIZE_STRING);
+    $user_email = filter_var($this->get('user_email'), FILTER_SANITIZE_STRING);
+    $user_desc = filter_var($this->get('user_desc'), FILTER_SANITIZE_STRING);
+    $user_class = filter_var($this->get('user_class'), FILTER_SANITIZE_STRING);
+    $user_race = filter_var($this->get('user_race'), FILTER_SANITIZE_STRING);
 
     if ($user_nick) {
       update_user_meta($user_id, 'nick', $user_nick);

@@ -20,8 +20,7 @@ export default {
         },
         success: function(response) {
           console.log(response);
-
-          // window.location.reload();
+          window.location.reload();
         },
         error: function() {
           $("body").removeClass("Loading");
@@ -32,6 +31,5 @@ export default {
   },
   finalize() {
     // JavaScript to be fired on the about page, after the init JS
-    console.log("about finalize");
   }
 };

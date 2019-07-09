@@ -6,7 +6,6 @@
 
     <form class="Form ajax-update-user" action="#" class="ajax-update-user" method="post">
       <input type="hidden" name="action" value="update_user">
-      <input type="hidden" name="_wpnonce" value="{{ fn('wp_create_nonce', 'update_user_token') }}">
       <input type="hidden" name="user_id" value="{{ current_user.ID }}">
 
       <input name="user_nick" type="text" placeholder="{{ current_user.nick ? : 'Ditt nick' }}">
