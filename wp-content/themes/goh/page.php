@@ -28,6 +28,10 @@ if (is_page('roster')) {
 
 // If page is my account, use that twig template.
 if (is_page('mitt-konto')) {
+  if (! is_user_logged_in()) {
+    exit(wp_redirect(get_page_url('login_page')));
+  }
+
   // Render roster twig template.
   Timber::render('my-account.twig', $context);
   exit;
