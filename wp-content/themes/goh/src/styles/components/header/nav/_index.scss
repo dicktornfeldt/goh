@@ -26,6 +26,11 @@ nav {
   @media (min-width: $medium) {
     display: inline-block;
   }
+  &:hover {
+    &::before {
+      color: $primary;
+    }
+  }
   &::before {
     margin: 0 2.5rem 0 0;
     content: "|";
