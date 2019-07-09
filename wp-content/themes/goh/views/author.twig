@@ -7,6 +7,8 @@
     <article class="ContentSidebar">
     {% if author.description %}
       <p>{{ author.description }}</p>
+    {% else %}
+      <p>{{ author.nick }} har ännu inte skrivit något om sig själv, men vi kan garantera att hen är stenhorde.</p>
     {% endif %}
     </article>
 
