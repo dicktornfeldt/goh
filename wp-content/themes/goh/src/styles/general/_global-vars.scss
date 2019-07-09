@@ -1,5 +1,6 @@
 // Fonts
 // -------------------------
+@import url("https://fonts.googleapis.com/css?family=Russo+One&display=swap");
 @font-face {
   font-family: "OpenSans";
   font-weight: normal;
@@ -8,16 +9,16 @@
   src: url("fonts/OpenSans-Regular.woff") format("woff");
 }
 
-@font-face {
-  font-family: "Roboto";
-  font-weight: normal;
-  font-style: normal;
-  src: url("fonts/Roboto-Bold.woff2") format("woff2");
-  src: url("fonts/Roboto-Bold.woff") format("woff");
-}
+// @font-face {
+//   font-family: "Roboto";
+//   font-weight: normal;
+//   font-style: normal;
+//   src: url("fonts/Roboto-Bold.woff2") format("woff2");
+//   src: url("fonts/Roboto-Bold.woff") format("woff");
+// }
 
 $font: "OpenSans";
-$font2: "Roboto";
+$font2: "Russo One", sans-serif;
 
 // Media queries
 // -------------------------

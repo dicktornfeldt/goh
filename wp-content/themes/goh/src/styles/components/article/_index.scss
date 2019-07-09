@@ -1,6 +1,6 @@
 .ArticleCard {
-  margin: 0 auto 3rem auto;
   max-width: 50rem;
+  margin: 0 auto 3rem auto;
   padding: 0 0 1.5rem 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.4);
   &:last-of-type {
@@ -8,13 +8,13 @@
   }
 }
 .ArticleCard__date {
-  text-transform: uppercase;
   font-family: $font2;
+  text-transform: uppercase;
 }
 .ArticleCard__header {
-  color: $primary;
-  margin: 0;
   font-family: $font2;
+  margin: 0;
+  color: $primary;
 }
 .ArticleCard__preamble {
   margin: 0;
@@ -28,10 +28,11 @@
 }
 
 .ArticleSingle__date {
+  font-family: $font2;
   display: block;
-  text-transform: uppercase;
-  text-align: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
   margin-bottom: 2rem;
   padding-bottom: 2rem;
+  text-align: center;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
 }

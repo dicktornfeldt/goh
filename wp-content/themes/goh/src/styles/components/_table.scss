@@ -1,5 +1,4 @@
 .Table {
-  font-family: $font2;
   width: 100%;
   font-size: 1.4rem;
   overflow: hidden;
@@ -18,6 +17,7 @@
 .Table__head {
   color: white;
   background-color: $primary;
+  font-family: $font2;
 }
 .Table__head__th {
   font-size: 1.3rem;
