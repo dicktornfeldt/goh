@@ -1,8 +1,12 @@
+{% set user_id = current_user.ID %}
+
+
+
 <article class="RaidCard">
   <small class="RaidCard__date">{{ raid.datetime }}</small>
   <h3 class="RaidCard__title">{{ raid.title }}</h3>
 
-  <button class="Button--small">Vilka är på?</button>
+  <button class="Button--small js-show-attendance">Vilka är på?</button>
 
   <form class="Form ajax-set-attendance" action="#" method="post">
     <input type="hidden" name="action" value="set_user_attendance">
@@ -11,10 +15,22 @@
     <div class="Form__inputwrapper">
       <label for="user_attendance">Ska du med?</label>
       <select name="user_attendance" required>
-        <option value="">--Sätt närvaro--</option>
+        <option value="no">Kan tyvärr inte</option>
+        {% if user_id in raid.attendance %}
+        <option selected value="yes">Jag kommer</option>
+        {% else %}
         <option value="yes">Jag kommer</option>
+        {% endif %}
       </select>
     </div>
   </form>
+
+  <aside class="RaidCard__roster">
+
+  {% for attende in raid.meta('attendance') %}
+    <p>{{attende.nick}}</p>
+  {% endfor %}
+
+  </aside>
 
 </article>

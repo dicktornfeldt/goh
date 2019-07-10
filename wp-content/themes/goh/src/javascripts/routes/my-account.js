@@ -24,7 +24,7 @@ export default {
         },
         error: function() {
           $("body").removeClass("Loading");
-          alert("Hopssan, nåt gick fel.");
+          alert("Hoppsan, nåt gick fel, säg till D.");
         }
       });
     });

@@ -34,8 +34,8 @@
             },
             "role": "",
             "allow_null": 0,
-            "multiple": 0,
-            "return_format": "array"
+            "multiple": 1,
+            "return_format": "object"
         }
     ],
     "location": [
@@ -69,5 +69,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1562782325
+    "modified": 1562790115
 }
