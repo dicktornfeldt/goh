@@ -1,5 +1,11 @@
 <nav>
+  {% if user %}
+  <a href="{{ site.url }}/raidschema">Raid</a>
+  {% else %}
   <a href="{{ site.url }}/om">Om</a>
+  {% endif %}
+
+
   <a href="{{ site.url }}/roster">Roster</a>
 
   {% if user %}

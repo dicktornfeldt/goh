@@ -1,0 +1,20 @@
+<article class="RaidCard">
+  <small class="RaidCard__date">{{ raid.datetime }}</small>
+  <h3 class="RaidCard__title">{{ raid.title }}</h3>
+
+  <button class="Button--small">Vilka är på?</button>
+
+  <form class="Form ajax-set-attendance" action="#" method="post">
+    <input type="hidden" name="action" value="set_user_attendance">
+    <input type="hidden" name="raid_id" value="{{ raid.id }}">
+    <input type="hidden" name="user_id" value="{{ current_user.ID }}">
+    <div class="Form__inputwrapper">
+      <label for="user_attendance">Ska du med?</label>
+      <select name="user_attendance" required>
+        <option value="">--Sätt närvaro--</option>
+        <option value="yes">Jag kommer</option>
+      </select>
+    </div>
+  </form>
+
+</article>

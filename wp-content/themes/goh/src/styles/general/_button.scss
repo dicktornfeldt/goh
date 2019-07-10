@@ -16,3 +16,9 @@
     background: $primary;
   }
 }
+
+.Button--small {
+  @extend .Button;
+  font-size: 1.2rem;
+  padding: 0.8rem 1.5rem;
+}

@@ -47,4 +47,33 @@ function create_post_type()
     'rewrite'       => ['slug' => 'application', 'with_front' => false],
   ];
   register_post_type('application', $args);
+
+  // Post Type - Raid
+  $labels = [
+    'name'               => _x('Raid', 'post type general name'),
+    'singular_name'      => _x('Raid', 'post type singular name'),
+    'add_new'            => _x('Lägg till Raid', 'Raid'),
+    'add_new_item'       => __('Lägg till ny Raid'),
+    'edit_item'          => __('Redigera Raid'),
+    'new_item'           => __('Nytt Raid'),
+    'all_items'          => __('Alla Raid'),
+    'view_item'          => __('Se Raid'),
+    'search_items'       => __('Sök Raid'),
+    'not_found'          => __('Inga Raid hittade'),
+    'not_found_in_trash' => __('Inga Raid hittade i papperskorgen'),
+    'parent_item_colon'  => '',
+    'menu_name'          => 'Raid'
+  ];
+  $args = [
+    'labels'        => $labels,
+    'description'   => 'Raid',
+    'public'        => true,
+    'show_ui'       => true,
+    'show_in_menu'  => true,
+    'publicly_queryable' => true,
+    'supports'      => ['title', 'editor'],
+    'has_archive'   => false,
+    'rewrite'       => ['slug' => 'raid', 'with_front' => false],
+  ];
+  register_post_type('raid', $args);
 }

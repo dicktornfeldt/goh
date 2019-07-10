@@ -32,8 +32,53 @@ if (is_page('mitt-konto')) {
     exit(wp_safe_redirect(home_url()));
   }
 
-  // Render roster twig template.
+  // Render my account twig template.
   Timber::render('my-account.twig', $context);
+  exit;
+}
+
+
+// If page is my account, use that twig template.
+if (is_page('raidschema')) {
+  if (! is_user_logged_in()) {
+    exit(wp_safe_redirect(home_url()));
+  }
+
+
+  // get current time in order to query raids that hasnt happened
+  date_default_timezone_set('Europe/Stockholm');
+  $formatted_time = strftime("%Y-%m-%d %T");
+
+
+  /**
+   * Query raids.
+   * @var array $args defines the query we want to do
+   */
+  $args = [
+    'post_type'      => 'raid',
+    'post_status'    => 'publish',
+    'posts_per_page' => 15,
+    'meta_key'       => 'datetime',
+    'orderby'        => 'meta_value',
+    'order'          => 'ASC',
+    'meta_query'             => [
+      [
+        'key'     => 'datetime',
+        'value'   => $formatted_time,
+        'compare' => '>',
+        'type'    => 'DATE'
+      ]
+    ]
+  ];
+
+
+  // get raids
+  $raids = Timber::get_posts($args);
+  $context['raids'] = $raids;
+
+
+  // Render raidschedule twig template.
+  Timber::render('raid.twig', $context);
   exit;
 }
 
