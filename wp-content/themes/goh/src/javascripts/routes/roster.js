@@ -4,7 +4,7 @@ import List from "list.js";
 export default {
   init() {
     var options = {
-      valueNames: ["nick", "race", "class"]
+      valueNames: ["nick", "race", "class", "role"]
     };
 
     // Init list
