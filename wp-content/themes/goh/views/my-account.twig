@@ -28,6 +28,16 @@
       </div>
 
       <div class="Form__inputwrapper">
+        <label for="user_role">Vad är din roll?</label>
+        <select name="user_role">
+          <option value="">--Välj din roll--</option>
+          <option {{ current_user.role == 'Healer' ? 'selected' : '' }} value="Healer">Healer</option>
+          <option {{ current_user.role == 'DPS' ? 'selected' : '' }} value="DPS">DPS</option>
+          <option {{ current_user.role == 'Tank' ? 'selected' : '' }} value="Tank">Tank</option>
+        </select>
+      </div>
+
+      <div class="Form__inputwrapper">
         <label for="user_race">Vad är du för ras?</label>
         <select name="user_race">
           <option value="">--Välj din ras--</option>

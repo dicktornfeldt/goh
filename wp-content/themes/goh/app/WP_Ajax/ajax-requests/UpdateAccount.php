@@ -29,6 +29,7 @@ class UpdateAccount extends WP_AJAX
     $user_email = filter_var($this->get('user_email'), FILTER_SANITIZE_STRING);
     $user_desc = filter_var($this->get('user_desc'), FILTER_SANITIZE_STRING);
     $user_class = filter_var($this->get('user_class'), FILTER_SANITIZE_STRING);
+    $user_role = filter_var($this->get('user_role'), FILTER_SANITIZE_STRING);
     $user_race = filter_var($this->get('user_race'), FILTER_SANITIZE_STRING);
 
     if ($user_nick) {
@@ -42,6 +43,9 @@ class UpdateAccount extends WP_AJAX
     }
     if ($user_class) {
       update_user_meta($user_id, 'class', $user_class);
+    }
+    if ($user_role) {
+      update_user_meta($user_id, 'role', $user_role);
     }
     if ($user_race) {
       update_user_meta($user_id, 'race', $user_race);

@@ -14,10 +14,12 @@
 
     <aside class="ContentSidebar__sidebar">
       <dl>
-        <dt>Ras:</dt>
-        <dd>{{ author.race }}</dd>
         <dt>Klass:</dt>
-        <dd>{{ author.class }}</dd>
+        <dd>{{ author.class ? : 'Saknar info' }}</dd>
+        <dt>Roll:</dt>
+        <dd>{{ author.role ? : 'Saknar info' }}</dd>
+        <dt>Ras:</dt>
+        <dd>{{ author.race ? : 'Saknar info' }}</dd>
       </dl>
     </aside>
 
