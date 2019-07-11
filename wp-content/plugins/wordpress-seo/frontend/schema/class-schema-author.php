@@ -28,7 +28,7 @@ class WPSEO_Schema_Author extends WPSEO_Schema_Person implements WPSEO_Graph_Pie
 	protected $type = array( 'Person' );
 
 	/**
-	 * WPSEO_Schema_Breadcrumb constructor.
+	 * WPSEO_Schema_Author constructor.
 	 *
 	 * @param WPSEO_Schema_Context $context A value object with context variables.
 	 */
@@ -125,17 +125,6 @@ class WPSEO_Schema_Author extends WPSEO_Schema_Person implements WPSEO_Graph_Pie
 		 * @api int|bool $user_id The user ID currently determined.
 		 */
 		return apply_filters( 'wpseo_schema_person_user_id', $user_id );
-	}
-
-	/**
-	 * Returns the string to use in Schema's `@id`.
-	 *
-	 * @param int $user_id The user ID if we're on a user page.
-	 *
-	 * @return string The `@id` string value.
-	 */
-	protected function determine_schema_id( $user_id ) {
-		return get_author_posts_url( $user_id ) . WPSEO_Schema_IDs::AUTHOR_HASH;
 	}
 
 	/**

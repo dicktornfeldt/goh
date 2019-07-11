@@ -40,14 +40,14 @@ $generated_i18n_strings = array(
 	// Reference: js/src/components/MailchimpSignup.js:109
 	__( 'MailChimp signup failed:', 'wordpress-seo' ),
 
-	// Reference: js/src/components/MediaUpload.js:138 js/src/components/MediaUpload.js:18
+	// Reference: js/src/components/MediaUpload.js:141 js/src/components/MediaUpload.js:18
 	// Reference: js/src/components/MediaUpload.js:17
 	__( 'Choose an image', 'wordpress-seo' ),
 
-	// Reference: js/src/components/MediaUpload.js:119
+	// Reference: js/src/components/MediaUpload.js:122
 	__( 'image preview', 'wordpress-seo' ),
 
-	// Reference: js/src/components/MediaUpload.js:97
+	// Reference: js/src/components/MediaUpload.js:100
 	__( 'Remove the image', 'wordpress-seo' ),
 
 	// Reference: node_modules/yoast-components/composites/LinkSuggestions/LinkSuggestion.js:48
@@ -83,7 +83,7 @@ $generated_i18n_strings = array(
 	// Reference: node_modules/yoast-components/composites/Plugin/HelpCenter/HelpCenter.js:78
 	__( 'Need help?', 'wordpress-seo' ),
 
-	// Reference: node_modules/yoast-components/composites/Plugin/Shared/components/KeywordInput.js:147
+	// Reference: node_modules/yoast-components/composites/Plugin/Shared/components/KeywordInput.js:146
 	__( 'Are you trying to use multiple keyphrases? You should add them separately below.', 'wordpress-seo' ),
 
 	// Reference: node_modules/yoast-components/composites/Plugin/SocialPreviews/Facebook/components/FacebookImage.js:146
