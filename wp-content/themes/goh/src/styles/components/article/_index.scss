@@ -1,10 +1,16 @@
 .ArticleCard {
-  max-width: 50rem;
   margin: 0 auto 3rem auto;
   padding: 0 0 1.5rem 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-  &:last-of-type {
-    border-bottom: none;
+  @media (min-width: $medium) {
+    margin: 0 2% 3rem 2%;
+    display: inline-block;
+    width: 45%;
+    vertical-align: top;
+  }
+  @media (min-width: $large) {
+    margin: 0 2%;
+    width: 29%;
   }
 }
 .ArticleCard__date {

@@ -9,8 +9,12 @@ export default {
     $(".js-show-form").on("click", function(e) {
       e.preventDefault();
       $(this)
-        .next(".Form")
+        .next(".Hero__formblock")
         .toggleClass("show");
+      $(this)
+        .parent()
+        .find(".Hero__textblock")
+        .toggleClass("hide");
     });
 
     /**

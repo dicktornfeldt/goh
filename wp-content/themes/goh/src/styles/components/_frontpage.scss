@@ -38,9 +38,73 @@
   }
 }
 
-.Preamble {
-  font-size: 115%;
-  margin: 0 0 5rem 0;
+.Hero {
+  margin: 12rem auto 5rem auto;
+  position: relative;
+  @media (min-width: $medium) {
+    margin: auto;
+    height: 100%;
+    height: 100vh;
+    max-width: 106rem;
+  }
+  .Hero__textcontainer {
+    @media (min-width: $medium) {
+      max-width: 53rem;
+      float: right;
+      position: relative;
+      top: 50%;
+      transform: translateY(-60%);
+      &.hide {
+        display: none;
+      }
+    }
+    h1 {
+      font-family: $font2;
+      font-size: 2.9rem;
+      line-height: 3.9rem;
+      margin: 0 0 1rem 0;
+      text-align: left;
+      text-transform: uppercase;
+      color: $primary;
+      @media (min-width: $medium) {
+        font-size: 4rem;
+        line-height: 5rem;
+      }
+    }
+    .Preamble {
+      font-size: 115%;
+      margin: 0 0 5rem 0;
+    }
+  }
+  .Hero__textblock {
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.25s ease;
+    @media (min-width: $medium) {
+      &.hide {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+  }
+
+  .Hero__formblock {
+    margin: 2rem 0 0 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-out;
+    overflow: hidden;
+    max-height: 0;
+    height: auto;
+    &.show {
+      opacity: 1;
+      visibility: visible;
+      max-height: 37rem;
+    }
+    .Form {
+      margin: 0;
+    }
+  }
 }
 
 .VideoBackground {
@@ -93,5 +157,19 @@
 
   .VideoBackground__video {
     display: none;
+  }
+}
+
+.NewsList {
+  background-image: url(images/bg-light.jpg);
+  background-repeat: repeat-y;
+  background-position: center;
+  background-size: 100% auto;
+  padding: 5rem 1.5rem;
+  margin: 0 -1.5rem;
+  box-shadow: 0 -0.5rem 2rem 0rem rgba(0, 0, 0, 0.5);
+  .NewsList__container {
+    max-width: 106rem;
+    margin: auto;
   }
 }
