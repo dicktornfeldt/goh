@@ -8,7 +8,11 @@ export default {
     };
 
     // Init list
-    var contactList = new List("roster", options);
+    var rosterList = new List("roster", options);
+
+    rosterList.sort("class", {
+      order: "asc"
+    });
   },
   finalize() {
     // JavaScript to be fired on the home page, after the init JS
