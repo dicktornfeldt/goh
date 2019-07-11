@@ -4,6 +4,7 @@ footer {
   margin: auto;
   padding: 4rem 1.5rem 7rem 1.5rem;
   background-color: darken($black, 7%);
+  border-top: 0.2rem solid $primary;
   text-align: center;
   a {
     font-size: 1.4rem;
