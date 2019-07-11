@@ -1,0 +1,147 @@
+{% set user_id = current_user.ID %}
+
+
+
+<article class="RaidCard">
+  <small class="RaidCard__date">{{ raid.datetime }}</small>
+  <h3 class="RaidCard__title">{{ raid.title }}</h3>
+
+  <button class="Button--small js-show-attendance">Vilka är på?</button>
+
+  <form class="Form ajax-set-attendance" action="#" method="post">
+    <input type="hidden" name="action" value="set_user_attendance">
+    <input type="hidden" name="raid_id" value="{{ raid.id }}">
+    <input type="hidden" name="user_id" value="{{ current_user.ID }}">
+    <div class="Form__inputwrapper">
+      <label for="user_attendance">Ska du med?</label>
+      <select name="user_attendance" required>
+        <option value="no">Kan tyvärr inte</option>
+        {% if user_id in raid.attendance %}
+        <option selected value="yes">Jag kommer</option>
+        {% else %}
+        <option value="yes">Jag kommer</option>
+        {% endif %}
+      </select>
+    </div>
+  </form>
+
+  <aside class="RaidCard__roster">
+
+  {# this is for counting roles #}
+  {% set healers = 0 %}
+  {% set tanks = 0 %}
+  {% set dps = 0 %}
+  {% for attende in raid.meta('attendance') %}
+    {% if 'Healer' in attende.role %}
+      {% set healers = healers + 1 %}
+    {% endif %}
+    {% if 'Tank' in attende.role %}
+      {% set tanks = tanks + 1 %}
+    {% endif %}
+    {% if 'DPS' in attende.role %}
+      {% set dps = dps + 1 %}
+    {% endif %}
+  {% endfor %}
+
+  <p class="RaidCard__rolecount">
+   {{ tanks }} tanks,
+   {{ dps }} dps,
+   {{ healers }} healers,
+  </p>
+
+  <div class="RaidCard__classlistwrap">
+
+    <ul class="RaidCard__classlist">
+      <strong><li>Warriors:</li></strong>
+      {% for attende in raid.meta('attendance') %}
+      {% if 'Warrior' in attende.class %}
+      <li class="warrior">
+        {{attende.nick}} <em>{{attende.role}}</em>
+      </li>
+      {% endif %}
+      {% endfor %}
+    </ul>
+
+    <ul class="RaidCard__classlist">
+      <strong><li>Druids:</li></strong>
+      {% for attende in raid.meta('attendance') %}
+      {% if 'Druid' in attende.class %}
+      <li class="Druid">
+        {{attende.nick}} <em>{{attende.role}}</em>
+      </li>
+      {% endif %}
+      {% endfor %}
+    </ul>
+
+    <ul class="RaidCard__classlist">
+      <strong><li>Warlocks:</li></strong>
+      {% for attende in raid.meta('attendance') %}
+      {% if 'Warlock' in attende.class %}
+      <li class="Warlock">
+        {{attende.nick}} <em>{{attende.role}}</em>
+      </li>
+      {% endif %}
+      {% endfor %}
+    </ul>
+
+    <ul class="RaidCard__classlist">
+      <strong><li>Hunters:</li></strong>
+      {% for attende in raid.meta('attendance') %}
+      {% if 'Hunter' in attende.class %}
+      <li class="Hunter">
+        {{attende.nick}} <em>{{attende.role}}</em>
+      </li>
+      {% endif %}
+      {% endfor %}
+    </ul>
+
+    <ul class="RaidCard__classlist">
+      <strong><li>Mages:</li></strong>
+      {% for attende in raid.meta('attendance') %}
+      {% if 'Mage' in attende.class %}
+      <li class="Mage">
+        {{attende.nick}} <em>{{attende.role}}</em>
+      </li>
+      {% endif %}
+      {% endfor %}
+    </ul>
+
+    <ul class="RaidCard__classlist">
+      <strong><li>Rogues:</li></strong>
+      {% for attende in raid.meta('attendance') %}
+      {% if 'Rogue' in attende.class %}
+      <li class="Rogue">
+        {{attende.nick}} <em>{{attende.role}}</em>
+      </li>
+      {% endif %}
+      {% endfor %}
+    </ul>
+
+    <ul class="RaidCard__classlist">
+      <strong><li>Shamans:</li></strong>
+      {% for attende in raid.meta('attendance') %}
+      {% if 'Shaman' in attende.class %}
+      <li class="Shaman">
+        {{attende.nick}} <em>{{attende.role}}</em>
+      </li>
+      {% endif %}
+      {% endfor %}
+    </ul>
+
+    <ul class="RaidCard__classlist">
+      <strong><li>Priests:</li></strong>
+      {% for attende in raid.meta('attendance') %}
+      {% if 'Priest' in attende.class %}
+      <li class="Priest">
+        {{attende.nick}} <em>{{attende.role}}</em>
+      </li>
+      {% endif %}
+      {% endfor %}
+    </ul>
+
+  </div>
+
+
+  </aside>
+
+</article>

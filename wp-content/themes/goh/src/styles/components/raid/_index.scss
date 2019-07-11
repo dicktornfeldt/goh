@@ -4,15 +4,17 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.4);
   @media (min-width: $medium) {
     margin: 0 0 1.5rem 0;
+    padding: 1.5rem;
+    border: 0.1rem solid $primary;
   }
   &:after {
-    content: "";
     display: block;
     clear: both;
+    content: "";
   }
   .Form {
-    text-align: left;
     margin: 1.5rem 0 0 0;
+    text-align: left;
     @media (min-width: $medium) {
       float: right;
       margin: 0;
@@ -23,8 +25,8 @@
   }
   .Button {
     @media (min-width: $medium) {
-      margin: -0.2rem 0 0 2.5rem;
       float: right;
+      margin: -0.2rem 0 0 2.5rem;
     }
   }
 }
@@ -41,8 +43,8 @@
   margin: 0 0 1.5rem 0;
   color: $primary;
   @media (min-width: $medium) {
-    margin: 0;
     display: inline-block;
+    margin: 0;
   }
 }
 
@@ -50,5 +52,36 @@
   display: none;
   &.show {
     display: block;
+  }
+}
+
+.RaidCard__rolecount {
+  font-family: $font2;
+  font-size: 115%;
+  text-align: center;
+  color: $primary;
+}
+
+.RaidCard__classlistwrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.RaidCard__classlist {
+  width: 49%;
+  margin: 0 0 2rem 0;
+  list-style: none;
+  @media (min-width: $medium) {
+    width: 24%;
+  }
+
+  li:first-child {
+    font-family: $font2;
+    color: $primary;
+  }
+  em {
+    font-size: 75%;
   }
 }
