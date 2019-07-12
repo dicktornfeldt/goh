@@ -13,9 +13,11 @@ nav {
     border-bottom: none;
   }
   a {
-    margin: 0 1.3rem;
+    margin: 0 0.9rem;
+    font-size: 1.2rem;
     @media (min-width: $medium) {
       margin: 0 0 0 2rem;
+      font-size: 1.4rem;
     }
   }
 }
