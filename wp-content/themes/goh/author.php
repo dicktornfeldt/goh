@@ -8,8 +8,8 @@ $context = Timber::get_context();
 $author_archive = get_userdata($author);
 
 
-/** Add author fields to context */
+// Add author fields to context
 $context['author'] = $author_archive;
 
 
-Timber::render('author.twig', $context);
+Timber::render('page-author.twig', $context);

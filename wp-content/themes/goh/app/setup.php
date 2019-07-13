@@ -27,8 +27,6 @@ add_action('wp_enqueue_scripts', function () {
 }, 100);
 
 
-
-
 /**
  * Theme setup
  */
@@ -66,12 +64,12 @@ add_action('after_setup_theme', function () {
 }, 20);
 
 
-add_filter('body_class', 'add_slug_to_body_class'); // Add slug to body class (Starkers build)
 
 
 /**
  * Add page slug to body class, love this - Credit: Starkers Wordpress Theme
  */
+add_filter('body_class', 'add_slug_to_body_class');
 function add_slug_to_body_class($classes)
 {
   global $post;
@@ -94,16 +92,17 @@ function add_slug_to_body_class($classes)
  */
 add_filter('use_block_editor_for_post', '__return_false', 10);
 add_filter('use_block_editor_for_post_type', '__return_false', 10);
+add_action('wp_print_styles', 'wps_deregister_styles', 100);
 function wps_deregister_styles()
 {
   wp_dequeue_style('wp-block-library');
 }
-add_action('wp_print_styles', 'wps_deregister_styles', 100);
 
 
 /**
  * Remove default image sizes
  */
+add_filter('intermediate_image_sizes_advanced', 'remove_default_image_sizes');
 function remove_default_image_sizes($sizes)
 {
   /* Default WordPress */
@@ -112,7 +111,6 @@ function remove_default_image_sizes($sizes)
   unset($sizes['large']);           // Remove Large resolution (1024 x 1024 max height 1024px)
   return $sizes;
 }
-add_filter('intermediate_image_sizes_advanced', 'remove_default_image_sizes');
 
 
 /**
@@ -157,10 +155,10 @@ function remove_unused_user_roles()
   remove_role('contributor');
 }
 
+
 /**
  * Redirect non admins
  */
-
 add_action('init', 'blockusers_init');
 function blockusers_init()
 {
@@ -180,10 +178,10 @@ add_filter('show_admin_bar', '__return_false');
 /**
  * Style login page
  */
+add_action('login_enqueue_scripts', 'my_login_stylesheet');
 function my_login_stylesheet()
 {
   $manifest = json_decode(file_get_contents(dirname(dirname(__FILE__)).'/build/assets.json', true));
   $main = $manifest->main;
   wp_enqueue_style('custom-login', get_template_directory_uri() . "/build/" . $main->css, false, null);
 }
-add_action('login_enqueue_scripts', 'my_login_stylesheet');

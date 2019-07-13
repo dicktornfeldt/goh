@@ -21,7 +21,7 @@ if (is_page('roster')) {
   $context['users'] = get_users($user_args);
 
   // Render roster twig template.
-  Timber::render('roster.twig', $context);
+  Timber::render('page-roster.twig', $context);
   exit;
 }
 
@@ -33,7 +33,7 @@ if (is_page('mitt-konto')) {
   }
 
   // Render my account twig template.
-  Timber::render('my-account.twig', $context);
+  Timber::render('page-myaccount.twig', $context);
   exit;
 }
 
@@ -78,7 +78,7 @@ if (is_page('raidschema')) {
 
 
   // Render raidschedule twig template.
-  Timber::render('raid.twig', $context);
+  Timber::render('page-raid.twig', $context);
   exit;
 }
 

@@ -5,20 +5,19 @@
 | Create Custom Post Type
 |--------------------------------------------------------------------------
 |
-| Custom function to create custom post type
+| Here are the custom post types of the project:
+| - Application
+| - Raid
 |
 */
 
 
-/**
- * Create Custom Post Types
- *
- * @return void
- */
 add_action('init', 'create_post_type');
 function create_post_type()
 {
-  // Post Type - Application
+  /**
+   * Post Type - Application
+   */
   $labels = [
     'name'               => _x('Ansökan', 'post type general name'),
     'singular_name'      => _x('Ansökan', 'post type singular name'),
@@ -48,7 +47,10 @@ function create_post_type()
   ];
   register_post_type('application', $args);
 
-  // Post Type - Raid
+
+  /**
+   * Post Type - Raid
+   */
   $labels = [
     'name'               => _x('Raid', 'post type general name'),
     'singular_name'      => _x('Raid', 'post type singular name'),
