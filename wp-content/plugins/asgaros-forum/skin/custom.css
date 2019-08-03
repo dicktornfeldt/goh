@@ -1,0 +1,46 @@
+#af-wrapper #forum-profile .display-name,
+#af-wrapper input[type="checkbox"]:checked:before {
+color: #ffa71b !important;
+}
+#af-wrapper .button-normal,
+#af-wrapper .title-element,
+#af-wrapper #forum-header,
+#af-wrapper #profile-header .background-avatar,
+#af-wrapper #profile-navigation,
+#af-wrapper input[type="radio"]:checked:before {
+background-color: #ffa71b !important;
+}
+#af-wrapper input[type="radio"]:focus,
+#af-wrapper input[type="checkbox"]:focus,
+#af-wrapper #profile-header {
+border-color: #ffa71b !important;
+}
+#af-wrapper .button-normal,
+#af-wrapper .title-element,
+#af-wrapper #forum-navigation a,
+#af-wrapper #forum-navigation-mobile a {
+border-color: #9f1600 !important;
+}
+#af-wrapper #profile-navigation a.active {
+background-color: #9f1600 !important;
+}
+#af-wrapper,
+#af-wrapper #forum-breadcrumbs a:hover,
+#af-wrapper .main-title {
+color: #1a1a1a !important;
+}
+#af-wrapper a,
+#af-wrapper .forum-post-menu a,
+#af-wrapper .post-author .topic-author,
+#af-wrapper #bottom-navigation {
+color: #ffa71b !important;
+}
+#af-wrapper .unread {
+color: #9f1600 !important;
+}
+#af-wrapper #read-unread .unread {
+background-color: #9f1600 !important;
+}
+#af-wrapper {
+font-family: OpenSans !important;
+}
