@@ -56,7 +56,7 @@ class SendApplication extends WP_AJAX
         *
         * @param string $url_entity Part of API we want to communicate to
         */
-        $curl = curl_init('https://discordapp.com/api/webhooks/598238677000257566/JI79fFatXdv06wxz7-yyowNvq9qZ5PZNy1CY_Qr5m3n65G9yjQ4O7IDOkslYso_Dnb40');
+        $curl = curl_init('https://discordapp.com/api/webhooks/607157238657712128/TTyIKojs4yqjAmrJU3ngFte5_6o-IZ0hkunccXBEMvGhXigzRixhYOWeIx3WK8LkL_h7');
 
 
         /**
