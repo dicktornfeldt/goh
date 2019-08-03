@@ -237,15 +237,15 @@ class AsgarosForumContent {
     //======================================================================
 
     // Inserts a new forum.
-    public function insert_forum($category_id, $name, $description, $parent_forum, $icon, $order, $closed, $approval = 0) {
+    public function insert_forum($category_id, $name, $description, $parent_forum, $icon, $order, $status = 'normal') {
         // Get a slug for the new forum.
         $forum_slug = $this->asgarosforum->rewrite->create_unique_slug($name, $this->asgarosforum->tables->forums, 'forum');
 
         // Insert the forum.
         $this->asgarosforum->db->insert(
             $this->asgarosforum->tables->forums,
-            array('name' => $name, 'parent_id' => $category_id, 'parent_forum' => $parent_forum, 'description' => $description, 'icon' => $icon, 'sort' => $order, 'closed' => $closed, 'approval' => $approval, 'slug' => $forum_slug),
-            array('%s', '%d', '%d', '%s', '%s', '%d', '%d', '%s')
+            array('name' => $name, 'parent_id' => $category_id, 'parent_forum' => $parent_forum, 'description' => $description, 'icon' => $icon, 'sort' => $order, 'forum_status' => $status, 'slug' => $forum_slug),
+            array('%s', '%d', '%d', '%s', '%s', '%d', '%s', '%s')
         );
 
         // Return the ID of the inserted forum.
@@ -270,7 +270,11 @@ class AsgarosForumContent {
         }
 
         // Insert the topic.
-        $this->asgarosforum->db->insert($this->asgarosforum->tables->topics, array('name' => $name, 'parent_id' => $forum_id, 'slug' => $topic_slug, 'approved' => $approved), array('%s', '%d', '%s', '%d'));
+        $this->asgarosforum->db->insert(
+            $this->asgarosforum->tables->topics,
+            array('name' => $name, 'parent_id' => $forum_id, 'slug' => $topic_slug, 'approved' => $approved, 'author_id' => $author_id),
+            array('%s', '%d', '%s', '%d', '%d')
+        );
 
         // Save the ID of the new topic.
         $inserted_ids = new stdClass;
@@ -485,11 +489,10 @@ class AsgarosForumContent {
         $order = apply_filters('asgarosforum_filter_get_threads_order', $order);
 
         // Build additional sub-queries.
-        $query_author = "SELECT author_id FROM {$this->asgarosforum->tables->posts} WHERE parent_id = t.id ORDER BY id ASC LIMIT 1";
         $query_answers = "SELECT (COUNT(*) - 1) FROM {$this->asgarosforum->tables->posts} WHERE parent_id = t.id";
 
         // Build final query and get results.
-        $query = "SELECT t.id, t.name, t.views, t.sticky, t.closed, ({$query_author}) AS author_id, ({$query_answers}) AS answers FROM {$this->asgarosforum->tables->topics} AS t, {$this->asgarosforum->tables->forums} AS f WHERE t.parent_id = f.id AND f.parent_id IN ({$ids_categories}) AND t.approved = 1 AND ((t.sticky = 2) OR (t.parent_id = %d AND t.sticky = 1)) ORDER BY ".$order.";";
+        $query = "SELECT t.id, t.name, t.views, t.sticky, t.closed, t.author_id, ({$query_answers}) AS answers FROM {$this->asgarosforum->tables->topics} AS t, {$this->asgarosforum->tables->forums} AS f WHERE t.parent_id = f.id AND f.parent_id IN ({$ids_categories}) AND t.approved = 1 AND ((t.sticky = 2) OR (t.parent_id = %d AND t.sticky = 1)) ORDER BY ".$order.";";
         $results = $this->asgarosforum->db->get_results($this->asgarosforum->db->prepare($query, $forum_id));
         $results = apply_filters('asgarosforum_filter_get_threads', $results);
 
@@ -519,11 +522,10 @@ class AsgarosForumContent {
         $order = apply_filters('asgarosforum_filter_get_threads_order', $order);
 
         // Build additional sub-queries.
-        $query_author = "SELECT author_id FROM {$this->asgarosforum->tables->posts} WHERE parent_id = t.id ORDER BY id ASC LIMIT 1";
         $query_answers = "SELECT (COUNT(*) - 1) FROM {$this->asgarosforum->tables->posts} WHERE parent_id = t.id";
 
         // Build final query and get results.
-        $query = "SELECT t.id, t.name, t.views, t.sticky, t.closed, ({$query_author}) AS author_id, ({$query_answers}) AS answers FROM {$this->asgarosforum->tables->topics} AS t WHERE t.parent_id = %d AND t.sticky = 0 AND t.approved = 1 ORDER BY {$order} {$limit};";
+        $query = "SELECT t.id, t.name, t.views, t.sticky, t.closed, t.author_id, ({$query_answers}) AS answers FROM {$this->asgarosforum->tables->topics} AS t WHERE t.parent_id = %d AND t.sticky = 0 AND t.approved = 1 ORDER BY {$order} {$limit};";
         $results = $this->asgarosforum->db->get_results($this->asgarosforum->db->prepare($query, $forum_id));
         $results = apply_filters('asgarosforum_filter_get_threads', $results);
 

@@ -120,7 +120,16 @@ class AsgarosForumAppearance {
 
 			$link = ($this->asgarosforum->current_page > 0) ? $this->asgarosforum->get_link('current') : esc_url(remove_query_arg('part', $this->asgarosforum->get_link('current', false, false, '', false)));
 			$title = ($this->asgarosforum->getMetaTitle()) ? $this->asgarosforum->getMetaTitle() : get_the_title();
-			$description = ($this->asgarosforum->current_description && $this->asgarosforum->error === false) ? $this->asgarosforum->current_description : $title;
+
+			// By default use the page title as description.
+			$description = $title;
+
+			// In forum overview use the forum description if available.
+			if ($this->asgarosforum->current_view === 'overview' && !empty($this->asgarosforum->options['forum_description'])) {
+				$description = $this->asgarosforum->options['forum_description'];
+			} else if ($this->asgarosforum->current_description && $this->asgarosforum->error === false) {
+				$description = $this->asgarosforum->current_description;
+			}
 
 			// Prevent indexing of some views, when there is an error or for other configurations.
 			$prevent_indexing = false;
@@ -273,7 +282,6 @@ class AsgarosForumAppearance {
 				$custom_css .= 'background-color: '.$this->options['custom_color'].' !important;'.PHP_EOL;
 			$custom_css .= '}'.PHP_EOL;
 
-			$custom_css .= '#af-wrapper #forum-search,'.PHP_EOL;
 			$custom_css .= '#af-wrapper input[type="radio"]:focus,'.PHP_EOL;
 			$custom_css .= '#af-wrapper input[type="checkbox"]:focus,'.PHP_EOL;
 			$custom_css .= '#af-wrapper #profile-header {'.PHP_EOL;
@@ -284,7 +292,6 @@ class AsgarosForumAppearance {
 		if ($this->options['custom_accent_color'] != $this->options_default['custom_accent_color'] && preg_match('/#([a-fA-F0-9]{3}){1,2}\b/', $this->options['custom_accent_color'])) {
 			$custom_css .= '#af-wrapper .button-normal,'.PHP_EOL;
 			$custom_css .= '#af-wrapper .title-element,'.PHP_EOL;
-			$custom_css .= '#af-wrapper #forum-header,'.PHP_EOL;
 			$custom_css .= '#af-wrapper #forum-navigation a,'.PHP_EOL;
 			$custom_css .= '#af-wrapper #forum-navigation-mobile a {'.PHP_EOL;
 				$custom_css .= 'border-color: '.$this->options['custom_accent_color'].' !important;'.PHP_EOL;

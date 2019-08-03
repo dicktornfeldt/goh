@@ -8,20 +8,54 @@ class AsgarosForumEditor {
 	public function __construct($object) {
 		$this->asgarosforum = $object;
 
-        add_filter('mce_buttons', array($this, 'default_mce_buttons'), 11, 2);
+        add_filter('mce_buttons', array($this, 'default_mce_buttons'), 1, 2);
 		add_filter('mce_buttons', array($this, 'add_mce_buttons'), 9999, 2);
-		add_filter('mce_buttons_2', array($this, 'remove_mce_buttons'), 11, 2);
-		add_filter('mce_buttons_3', array($this, 'remove_mce_buttons'), 11, 2);
-		add_filter('mce_buttons_4', array($this, 'remove_mce_buttons'), 11, 2);
+		add_filter('mce_buttons_2', array($this, 'remove_mce_buttons'), 1, 2);
+		add_filter('mce_buttons_3', array($this, 'remove_mce_buttons'), 1, 2);
+		add_filter('mce_buttons_4', array($this, 'remove_mce_buttons'), 1, 2);
         add_filter('disable_captions', array($this, 'disable_captions'));
 		add_filter('tiny_mce_before_init', array($this, 'toggle_editor'));
 	}
 
 	// Set the default TinyMCE buttons.
 	public function default_mce_buttons($buttons, $editor_id) {
+		// Array of default editor buttons of WordPress which should not get added automatically to the forum.
+		$default_buttons = array(
+			'aligncenter',
+			'alignleft',
+			'alignright',
+			'blockquote',
+			'bold',
+			'bullist',
+			'charmap',
+			'dfw',
+			'forecolor',
+			'formatselect',
+			'fullscreen',
+			'hr',
+			'indent',
+			'italic',
+			'link',
+			'numlist',
+			'outdent',
+			'pastetext',
+			'redo',
+			'removeformat',
+			'spellchecker',
+			'strikethrough',
+			'underline',
+			'undo',
+			'unlink',
+			'wp_add_media',
+			'wp_adv',
+			'wp_help',
+			'wp_more'
+		);
+
+
         if ($this->asgarosforum->executePlugin && $editor_id === 'message') {
 			// Build array of available buttons.
-			$buttons = array(
+			$forum_buttons = array(
 				'bold',
 				'italic',
 				'underline',
@@ -42,6 +76,13 @@ class AsgarosForumEditor {
 				'link'
 			);
 
+			// Find non-default editor buttons.
+			$unique_buttons = array_diff($buttons, $default_buttons);
+
+			// Merge forum and non-default editor buttons.
+			$buttons = array_merge($forum_buttons, $unique_buttons);
+
+			// Apply filters.
 			$buttons = apply_filters('asgarosforum_filter_editor_buttons', $buttons);
         }
 

@@ -5,7 +5,7 @@ Tags: forum, forums, discussion, multisite, community, bulletin, board, asgaros,
 Requires at least: 4.9
 Tested up to: 5.2
 Requires PHP: 5.2
-Stable tag: 1.14.13
+Stable tag: 1.14.15
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -86,6 +86,19 @@ You can find a list of available hooks and filters on this site:
 6. Manage general options.
 
 == Changelog ==
+= 1.14.15 =
+* Fixed: Compatibility issues with certain editor plugins
+* Fixed: Display issues with some themes
+* Changed: Combined approval and closed options into a forum status option
+* Updated: Font Awesome version 5.10.0
+* Improved compatibility with Enlighter
+* Minor design changes
+* Performance improvements and code optimizations
+= 1.14.14 =
+* Added: Option to define general forum description
+* Fixed: Dont cut meta-tag description in the middle of a word
+* Fixed: Compatibility issues with certain editor plugins
+* Performance improvements and code optimizations
 = 1.14.13 =
 * Fixed: Problems when saving ads
 * Fixed: Fatal PHP error when processing mentionings
