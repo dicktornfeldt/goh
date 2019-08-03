@@ -4,24 +4,41 @@
 
     <section id="roster" class="Page__wrapper">
       <input type="text" class="search" placeholder="Sök..." />
+
+      <div class="Form__inputwrapper">
+        <select name="filter_member" class="js-filter-member" required>
+          <option selected value="alla">Visa alla</option>
+          <option value="raiders">Visa raidande medlemmar</option>
+        </select>
+      </div>
+
       <table class="Table">
         <thead class="Table__head">
           <tr class="Table__head__tr">
             <th class="sort Table__head__th" data-sort="nick">Nick</th>
-            <th class="sort Table__head__th" data-sort="class">Klass</th>
+            <th class="sort Table__head__th" data-sort="rank">Rank</th>
             <th class="sort Table__head__th" data-sort="role">Roll</th>
             <th class="sort Table__head__th" data-sort="race">Ras</th>
+            <th class="sort Table__head__th" data-sort="class">Klass</th>
           </tr>
         </thead>
         <tbody class="list Table__body">
 
         {% for user in users %}
 
+          {% if user.rank == 'GM' or user.rank == 'Officer' or user.rank == 'Casual officer' or user.rank == 'Veteran' or user.rank == 'Class leader' or user.rank == 'Raider' %}
+          {% set raiding = true %}
+          {% else %}
+          {% set raiding = false %}
+          {% endif %}
+
           <tr class="Table__tr">
+            <td class="raiders Table__td--hidden">{{raiding ? 'raiders' : '' }}</td>
             <td class="nick Table__td"><a href="/pres/{{ user.user_nicename }}">{{ user.nick }}</a></td>
-            <td class="class Table__td {{ user.class }}">{{ user.class }}</td>
+            <td class="rank Table__td {{ user.rank }}">{{ user.rank ?: 'Horde' }}</td>
             <td class="role Table__td {{ user.role }}">{{ user.role ? : '-' }}</td>
             <td class="race Table__td {{ user.race }}">{{ user.race }}</td>
+            <td class="class Table__td {{ user.class }}">{{ user.class }}</td>
           </tr>
 
         {% endfor %}

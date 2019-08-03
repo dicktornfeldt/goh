@@ -1,6 +1,6 @@
 .Table {
   width: 100%;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   overflow: hidden;
   border-spacing: 0;
   text-align: left;
@@ -9,6 +9,9 @@
   border-radius: 0.5rem;
   background-color: white;
   box-shadow: 0 0 2rem rgba(0, 0, 0, 0.6);
+  @media (min-width: $medium) {
+    font-size: 1.4rem;
+  }
   a:hover {
     text-decoration: underline;
     color: $black;
@@ -24,14 +27,25 @@
   padding: 0.7rem 1rem;
   cursor: pointer;
   text-transform: uppercase;
+  &:nth-child(2),
+  &:nth-child(3) {
+    display: none;
+    @media (min-width: $medium) {
+      display: table-cell;
+    }
+  }
   &:hover {
     background-color: lighten($primary, 5%);
   }
   &:first-child {
-    padding-left: 1.5rem;
+    @media (min-width: $medium) {
+      padding-left: 1.5rem;
+    }
   }
   &:last-child {
-    padding-right: 1.5rem;
+    @media (min-width: $medium) {
+      padding-right: 1.5rem;
+    }
   }
   &.desc,
   &.asc {
@@ -44,21 +58,31 @@
     background-color: darken(white, 5%);
   }
 }
+
 .Table__td {
   padding: 0.7rem 1rem;
   background-repeat: no-repeat;
   background-position: 95% 50%;
   background-size: 2.4rem 2.4rem;
+  &:nth-child(2),
+  &:nth-child(3) {
+    display: none;
+    @media (min-width: $medium) {
+      display: table-cell;
+    }
+  }
   a {
     text-decoration: underline;
   }
   &:first-child {
-    padding-left: 1.5rem;
+    @media (min-width: $medium) {
+      padding-left: 1.5rem;
+    }
   }
   &:last-child {
-    padding-right: 1.5rem;
-  }
-  &:after {
+    @media (min-width: $medium) {
+      padding-right: 1.5rem;
+    }
   }
   &.Priest {
     // border-bottom: 0.2rem solid $priest;
@@ -105,4 +129,8 @@
   &.Troll {
     background-image: url(images/icons/troll.png);
   }
+}
+
+.Table__td--hidden {
+  display: none;
 }
