@@ -64,8 +64,8 @@
   background-repeat: no-repeat;
   background-position: 95% 50%;
   background-size: 2.4rem 2.4rem;
-  &:nth-child(2),
-  &:nth-child(3) {
+  &:nth-child(3),
+  &:nth-child(4) {
     display: none;
     @media (min-width: $medium) {
       display: table-cell;
