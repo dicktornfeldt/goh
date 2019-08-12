@@ -8,6 +8,10 @@ main {
   @media (min-width: $medium) {
     margin: 9.5rem auto;
   }
+  @media (min-width: $widescreen) {
+    max-width: 95rem;
+  }
+
   &:after {
     display: block;
     clear: both;
