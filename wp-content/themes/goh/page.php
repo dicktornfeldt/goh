@@ -10,6 +10,7 @@ if (is_page('roster')) {
   $user_args = [
     'orderby' => 'display_name',
     'order'   => 'DESC',
+    'exclude' => [66]
   ];
 
 
