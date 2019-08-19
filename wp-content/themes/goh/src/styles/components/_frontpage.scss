@@ -171,5 +171,7 @@
   .NewsList__container {
     max-width: 106rem;
     margin: auto;
+    flex-wrap: wrap;
+    display: flex;
   }
 }
