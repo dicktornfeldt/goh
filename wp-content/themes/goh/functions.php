@@ -9,6 +9,7 @@
  *
  */
 
+
 $function_includes = [
   'app/setup.php', // Theme setup
   'app/cpt.php', // Custom post type

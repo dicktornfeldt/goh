@@ -36,6 +36,68 @@
             "allow_null": 0,
             "multiple": 1,
             "return_format": "object"
+        },
+        {
+            "key": "field_5d8e5b0cfa224",
+            "label": "Attendance list",
+            "name": "attendance_list",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "",
+            "sub_fields": [
+                {
+                    "key": "field_5d8e5bd33b42d",
+                    "label": "Användare",
+                    "name": "anvandare",
+                    "type": "user",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "role": "",
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "return_format": "object"
+                },
+                {
+                    "key": "field_5d8e5b1efa225",
+                    "label": "Närvaro",
+                    "name": "narvaro",
+                    "type": "button_group",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "Nej": "Nej",
+                        "Kanske": "Kanske",
+                        "Ja": "Ja"
+                    },
+                    "allow_null": 0,
+                    "default_value": "",
+                    "layout": "horizontal",
+                    "return_format": "value"
+                }
+            ]
         }
     ],
     "location": [
@@ -69,5 +131,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1562790115
+    "modified": 1569614350
 }

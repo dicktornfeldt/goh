@@ -1,6 +1,6 @@
 {% set user_id = current_user.ID %}
 
-<article class="RaidCard">
+<article class="RaidCard ">
   <small class="RaidCard__date">{{ raid.datetime }}</small>
   <h3 class="RaidCard__title">{{ raid.title }}</h3>
 
@@ -13,12 +13,10 @@
     <div class="Form__inputwrapper">
       <label for="user_attendance">Ska du med?</label>
       <select name="user_attendance" required>
-        <option value="no">Kan tyvärr inte</option>
-        {% if user_id in raid.attendance %}
-        <option selected value="yes">Jag kommer</option>
-        {% else %}
-        <option value="yes">Jag kommer</option>
-        {% endif %}
+        <option value="">Kommer du?</option>
+        <option value="Nej">Nej</option>
+        <option value="Kanske">Kanske</option>
+        <option value="Ja">Ja</option>
       </select>
     </div>
   </form>
@@ -26,17 +24,20 @@
   <aside class="RaidCard__roster">
 
   {# this is for counting roles #}
+  {% set attenders = raid.meta('attendance_list') %}
+
   {% set healers = 0 %}
   {% set tanks = 0 %}
   {% set dps = 0 %}
-  {% for attende in raid.meta('attendance') %}
-    {% if 'Healer' in attende.role %}
+
+  {% for attende in attenders %}
+    {% if 'Healer' in attende.anvandare.role %}
       {% set healers = healers + 1 %}
     {% endif %}
-    {% if 'Tank' in attende.role %}
+    {% if 'Tank' in attende.anvandare.role %}
       {% set tanks = tanks + 1 %}
     {% endif %}
-    {% if 'DPS' in attende.role %}
+    {% if 'DPS' in attende.anvandare.role %}
       {% set dps = dps + 1 %}
     {% endif %}
   {% endfor %}
@@ -50,8 +51,95 @@
   <div class="RaidCard__classlistwrap">
 
     <ul class="RaidCard__classlist">
+      <strong><li>Tanks:</li></strong>
+      {% for attende in attenders %}
+      {% if 'Tank' in attende.anvandare.role and 'Warrior' in attende.anvandare.class  %}
+      <li>{{attende.anvandare.nick}} <em>{{attende.anvandare.class}} {{attende.narvaro == 'Kanske' ? '- kanske' : ''}}</em></li>
+      {% endif %}
+      {% endfor %}
+
+      {% for attende in attenders %}
+      {% if 'Tank' in attende.anvandare.role and 'Druid' in attende.anvandare.class  %}
+      <li>{{attende.anvandare.nick}} <em>{{attende.anvandare.class}} {{attende.narvaro == 'Kanske' ? '- kanske' : ''}}</em></li>
+      {% endif %}
+      {% endfor %}
+    </ul>
+
+    <ul class="RaidCard__classlist">
+      <strong><li>DPS:</li></strong>
+      {% for attende in attenders %}
+      {% if 'DPS' in attende.anvandare.role and 'Warrior' in attende.anvandare.class  %}
+      <li>{{attende.anvandare.nick}} <em>{{attende.anvandare.class}} {{attende.narvaro == 'Kanske' ? '- kanske' : ''}}</em></li>
+      {% endif %}
+      {% endfor %}
+
+      {% for attende in attenders %}
+      {% if 'DPS' in attende.anvandare.role and 'Hunter' in attende.anvandare.class  %}
+      <li>{{attende.anvandare.nick}} <em>{{attende.anvandare.class}} {{attende.narvaro == 'Kanske' ? '- kanske' : ''}}</em></li>
+      {% endif %}
+      {% endfor %}
+
+      {% for attende in attenders %}
+      {% if 'DPS' in attende.anvandare.role and 'Druid' in attende.anvandare.class  %}
+      <li>{{attende.anvandare.nick}} <em>{{attende.anvandare.class}} {{attende.narvaro == 'Kanske' ? '- kanske' : ''}}</em></li>
+      {% endif %}
+      {% endfor %}
+
+      {% for attende in attenders %}
+      {% if 'DPS' in attende.anvandare.role and 'Priest' in attende.anvandare.class  %}
+      <li>{{attende.anvandare.nick}} <em>{{attende.anvandare.class}} {{attende.narvaro == 'Kanske' ? '- kanske' : ''}}</em></li>
+      {% endif %}
+      {% endfor %}
+
+      {% for attende in attenders %}
+      {% if 'DPS' in attende.anvandare.role and 'Mage' in attende.anvandare.class  %}
+      <li>{{attende.anvandare.nick}} <em>{{attende.anvandare.class}} {{attende.narvaro == 'Kanske' ? '- kanske' : ''}}</em></li>
+      {% endif %}
+      {% endfor %}
+
+      {% for attende in attenders %}
+      {% if 'DPS' in attende.anvandare.role and 'Warlock' in attende.anvandare.class  %}
+      <li>{{attende.anvandare.nick}} <em>{{attende.anvandare.class}} {{attende.narvaro == 'Kanske' ? '- kanske' : ''}}</em></li>
+      {% endif %}
+      {% endfor %}
+
+      {% for attende in attenders %}
+      {% if 'DPS' in attende.anvandare.role and 'Rogue' in attende.anvandare.class  %}
+      <li>{{attende.anvandare.nick}} <em>{{attende.anvandare.class}} {{attende.narvaro == 'Kanske' ? '- kanske' : ''}}</em></li>
+      {% endif %}
+      {% endfor %}
+
+      {% for attende in attenders %}
+      {% if 'DPS' in attende.anvandare.role and 'Shaman' in attende.anvandare.class  %}
+      <li>{{attende.anvandare.nick}} <em>{{attende.anvandare.class}} {{attende.narvaro == 'Kanske' ? '- kanske' : ''}}</em></li>
+      {% endif %}
+      {% endfor %}
+    </ul>
+
+    <ul class="RaidCard__classlist">
+      <strong><li>Healers:</li></strong>
+      {% for attende in attenders %}
+      {% if 'Healer' in attende.anvandare.role and 'Druid' in attende.anvandare.class  %}
+      <li>{{attende.anvandare.nick}} <em>{{attende.anvandare.class}} {{attende.narvaro == 'Kanske' ? '- kanske' : ''}}</em></li>
+      {% endif %}
+      {% endfor %}
+
+      {% for attende in attenders %}
+      {% if 'Healer' in attende.anvandare.role and 'Priest' in attende.anvandare.class  %}
+      <li>{{attende.anvandare.nick}} <em>{{attende.anvandare.class}} {{attende.narvaro == 'Kanske' ? '- kanske' : ''}}</em></li>
+      {% endif %}
+      {% endfor %}
+
+      {% for attende in attenders %}
+      {% if 'Healer' in attende.anvandare.role and 'Shaman' in attende.anvandare.class  %}
+      <li>{{attende.anvandare.nick}} <em>{{attende.anvandare.class}} {{attende.narvaro == 'Kanske' ? '- kanske' : ''}}</em></li>
+      {% endif %}
+      {% endfor %}
+    </ul>
+{#
+    <ul class="RaidCard__classlist">
       <strong><li>Warriors:</li></strong>
-      {% for attende in raid.meta('attendance') %}
+      {% for attende in attenders %}
       {% if 'Warrior' in attende.class %}
       <li class="warrior">
         {{attende.nick}} <em>{{attende.role}}</em>
@@ -62,7 +150,7 @@
 
     <ul class="RaidCard__classlist">
       <strong><li>Druids:</li></strong>
-      {% for attende in raid.meta('attendance') %}
+      {% for attende in attenders %}
       {% if 'Druid' in attende.class %}
       <li class="Druid">
         {{attende.nick}} <em>{{attende.role}}</em>
@@ -73,7 +161,7 @@
 
     <ul class="RaidCard__classlist">
       <strong><li>Warlocks:</li></strong>
-      {% for attende in raid.meta('attendance') %}
+      {% for attende in attenders %}
       {% if 'Warlock' in attende.class %}
       <li class="Warlock">
         {{attende.nick}} <em>{{attende.role}}</em>
@@ -84,7 +172,7 @@
 
     <ul class="RaidCard__classlist">
       <strong><li>Hunters:</li></strong>
-      {% for attende in raid.meta('attendance') %}
+      {% for attende in attenders %}
       {% if 'Hunter' in attende.class %}
       <li class="Hunter">
         {{attende.nick}} <em>{{attende.role}}</em>
@@ -95,7 +183,7 @@
 
     <ul class="RaidCard__classlist">
       <strong><li>Mages:</li></strong>
-      {% for attende in raid.meta('attendance') %}
+      {% for attende in attenders %}
       {% if 'Mage' in attende.class %}
       <li class="Mage">
         {{attende.nick}} <em>{{attende.role}}</em>
@@ -106,7 +194,7 @@
 
     <ul class="RaidCard__classlist">
       <strong><li>Rogues:</li></strong>
-      {% for attende in raid.meta('attendance') %}
+      {% for attende in attenders %}
       {% if 'Rogue' in attende.class %}
       <li class="Rogue">
         {{attende.nick}} <em>{{attende.role}}</em>
@@ -117,7 +205,7 @@
 
     <ul class="RaidCard__classlist">
       <strong><li>Shamans:</li></strong>
-      {% for attende in raid.meta('attendance') %}
+      {% for attende in attenders %}
       {% if 'Shaman' in attende.class %}
       <li class="Shaman">
         {{attende.nick}} <em>{{attende.role}}</em>
@@ -128,14 +216,14 @@
 
     <ul class="RaidCard__classlist">
       <strong><li>Priests:</li></strong>
-      {% for attende in raid.meta('attendance') %}
+      {% for attende in attenders %}
       {% if 'Priest' in attende.class %}
       <li class="Priest">
         {{attende.nick}} <em>{{attende.role}}</em>
       </li>
       {% endif %}
       {% endfor %}
-    </ul>
+    </ul> #}
 
   </div>
 
