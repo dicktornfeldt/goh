@@ -10,6 +10,7 @@ export default {
       e.preventDefault();
       $(this)
         .parent()
+        .parent()
         .find(".RaidCard__roster")
         .toggleClass("show");
     });

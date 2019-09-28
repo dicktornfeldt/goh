@@ -20,24 +20,6 @@
             "first_day": 1
         },
         {
-            "key": "field_5d262a0558997",
-            "label": "Attendance",
-            "name": "attendance",
-            "type": "user",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "role": "",
-            "allow_null": 0,
-            "multiple": 1,
-            "return_format": "object"
-        },
-        {
             "key": "field_5d8e5b0cfa224",
             "label": "Attendance list",
             "name": "attendance_list",
@@ -131,5 +113,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1569614350
+    "modified": 1569616536
 }

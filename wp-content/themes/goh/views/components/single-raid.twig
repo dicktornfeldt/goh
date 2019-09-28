@@ -1,10 +1,26 @@
 {% set user_id = current_user.ID %}
 
-<article class="RaidCard ">
-  <small class="RaidCard__date">{{ raid.datetime }}</small>
-  <h3 class="RaidCard__title">{{ raid.title }}</h3>
+{% set attenders = raid.meta('attendance_list') %}
 
-  <button class="Button--small js-show-attendance">Vilka är på?</button>
+{% set attende_status = 'Nej' %}
+
+{% for attende in attenders %}
+  {% if attende.anvandare.ID == user_id %}
+    {% set attende_status = attende.narvaro %}
+  {% endif %}
+{% endfor %}
+
+<article class="RaidCard RaidCard__status--{{attende_status}}">
+  <small class="RaidCard__date">{{ raid.datetime }}</small>
+  <h3 class="RaidCard__title">{{ raid.title }} -
+  {% if attende_status == 'Ja' %}
+  Du är signad!
+  {% elseif attende_status == 'Kanske' %}
+  Du är satt som kanske..
+  {% else %}
+  Du är inte reggad :(
+  {% endif %}
+  </h3>
 
   <form class="Form ajax-set-attendance" action="#" method="post">
     <input type="hidden" name="action" value="set_user_attendance">
@@ -21,11 +37,13 @@
     </div>
   </form>
 
+  <div class="RaidCard__buttonwrap">
+    <button class="Button--small js-show-attendance">Vilka är på?</button>
+  </div>
+
   <aside class="RaidCard__roster">
 
   {# this is for counting roles #}
-  {% set attenders = raid.meta('attendance_list') %}
-
   {% set healers = 0 %}
   {% set tanks = 0 %}
   {% set dps = 0 %}

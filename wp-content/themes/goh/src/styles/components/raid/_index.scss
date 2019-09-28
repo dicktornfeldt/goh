@@ -5,7 +5,16 @@
   @media (min-width: $medium) {
     margin: 0 0 1.5rem 0;
     padding: 1.5rem;
-    border: 0.1rem solid $primary;
+    border: 0.2rem solid red;
+    &.RaidCard__status--Kanske {
+      border: 0.2rem solid $primary;
+    }
+    &.RaidCard__status--Ja {
+      border: 0.2rem solid green;
+    }
+    &.RaidCard__status--Nej {
+      border: 0.2rem solid red;
+    }
   }
   &:after {
     display: block;
@@ -23,11 +32,13 @@
       }
     }
   }
-  .Button {
-    @media (min-width: $medium) {
-      float: right;
-      margin: -0.2rem 0 0 2.5rem;
-    }
+}
+
+.RaidCard__buttonwrap {
+  margin: 2.5rem 0 0 0;
+  @media (min-width: $medium) {
+    text-align: right;
+    margin: 1.5rem 0 0 0;
   }
 }
 
