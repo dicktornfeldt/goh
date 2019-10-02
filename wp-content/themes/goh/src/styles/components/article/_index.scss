@@ -58,12 +58,7 @@
 
 .ArticleSingle__figure {
   @extend .ArticleCard__figure;
-  @media (min-width: $medium) {
-    max-width: 55%;
-    margin: 0 0 3rem 5%;
-    display: inline-block;
-    float: right;
-  }
+  margin: 0 0 3rem 0;
 }
 .ArticleSingle__img {
   @extend .ArticleCard__img;
