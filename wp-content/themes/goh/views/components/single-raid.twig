@@ -72,13 +72,13 @@
       <strong><li>Tanks:</li></strong>
       {% for attende in attenders %}
       {% if 'Tank' in attende.anvandare.role and 'Warrior' in attende.anvandare.class  %}
-      <li>{{attende.anvandare.nick}} <em>{{attende.anvandare.class}} {{attende.narvaro == 'Kanske' ? '- kanske' : ''}}</em></li>
+      <li>{{attende.signup_number}}. {{attende.anvandare.nick}} <em>{{attende.anvandare.class}} {{attende.narvaro == 'Kanske' ? '- kanske' : ''}}</em></li>
       {% endif %}
       {% endfor %}
 
       {% for attende in attenders %}
       {% if 'Tank' in attende.anvandare.role and 'Druid' in attende.anvandare.class  %}
-      <li>{{attende.anvandare.nick}} <em>{{attende.anvandare.class}} {{attende.narvaro == 'Kanske' ? '- kanske' : ''}}</em></li>
+      <li>{{attende.signup_number}}. {{attende.anvandare.nick}} <em>{{attende.anvandare.class}} {{attende.narvaro == 'Kanske' ? '- kanske' : ''}}</em></li>
       {% endif %}
       {% endfor %}
     </ul>
@@ -87,49 +87,49 @@
       <strong><li>DPS:</li></strong>
       {% for attende in attenders %}
       {% if 'DPS' in attende.anvandare.role and 'Warrior' in attende.anvandare.class  %}
-      <li>{{attende.anvandare.nick}} <em>{{attende.anvandare.class}} {{attende.narvaro == 'Kanske' ? '- kanske' : ''}}</em></li>
+      <li>{{attende.signup_number}}. {{attende.anvandare.nick}} <em>{{attende.anvandare.class}} {{attende.narvaro == 'Kanske' ? '- kanske' : ''}}</em></li>
       {% endif %}
       {% endfor %}
 
       {% for attende in attenders %}
       {% if 'DPS' in attende.anvandare.role and 'Hunter' in attende.anvandare.class  %}
-      <li>{{attende.anvandare.nick}} <em>{{attende.anvandare.class}} {{attende.narvaro == 'Kanske' ? '- kanske' : ''}}</em></li>
+      <li>{{attende.signup_number}}. {{attende.anvandare.nick}} <em>{{attende.anvandare.class}} {{attende.narvaro == 'Kanske' ? '- kanske' : ''}}</em></li>
       {% endif %}
       {% endfor %}
 
       {% for attende in attenders %}
       {% if 'DPS' in attende.anvandare.role and 'Druid' in attende.anvandare.class  %}
-      <li>{{attende.anvandare.nick}} <em>{{attende.anvandare.class}} {{attende.narvaro == 'Kanske' ? '- kanske' : ''}}</em></li>
+      <li>{{attende.signup_number}}. {{attende.anvandare.nick}} <em>{{attende.anvandare.class}} {{attende.narvaro == 'Kanske' ? '- kanske' : ''}}</em></li>
       {% endif %}
       {% endfor %}
 
       {% for attende in attenders %}
       {% if 'DPS' in attende.anvandare.role and 'Priest' in attende.anvandare.class  %}
-      <li>{{attende.anvandare.nick}} <em>{{attende.anvandare.class}} {{attende.narvaro == 'Kanske' ? '- kanske' : ''}}</em></li>
+      <li>{{attende.signup_number}}. {{attende.anvandare.nick}} <em>{{attende.anvandare.class}} {{attende.narvaro == 'Kanske' ? '- kanske' : ''}}</em></li>
       {% endif %}
       {% endfor %}
 
       {% for attende in attenders %}
       {% if 'DPS' in attende.anvandare.role and 'Mage' in attende.anvandare.class  %}
-      <li>{{attende.anvandare.nick}} <em>{{attende.anvandare.class}} {{attende.narvaro == 'Kanske' ? '- kanske' : ''}}</em></li>
+      <li>{{attende.signup_number}}. {{attende.anvandare.nick}} <em>{{attende.anvandare.class}} {{attende.narvaro == 'Kanske' ? '- kanske' : ''}}</em></li>
       {% endif %}
       {% endfor %}
 
       {% for attende in attenders %}
       {% if 'DPS' in attende.anvandare.role and 'Warlock' in attende.anvandare.class  %}
-      <li>{{attende.anvandare.nick}} <em>{{attende.anvandare.class}} {{attende.narvaro == 'Kanske' ? '- kanske' : ''}}</em></li>
+      <li>{{attende.signup_number}}. {{attende.anvandare.nick}} <em>{{attende.anvandare.class}} {{attende.narvaro == 'Kanske' ? '- kanske' : ''}}</em></li>
       {% endif %}
       {% endfor %}
 
       {% for attende in attenders %}
       {% if 'DPS' in attende.anvandare.role and 'Rogue' in attende.anvandare.class  %}
-      <li>{{attende.anvandare.nick}} <em>{{attende.anvandare.class}} {{attende.narvaro == 'Kanske' ? '- kanske' : ''}}</em></li>
+      <li>{{attende.signup_number}}. {{attende.anvandare.nick}} <em>{{attende.anvandare.class}} {{attende.narvaro == 'Kanske' ? '- kanske' : ''}}</em></li>
       {% endif %}
       {% endfor %}
 
       {% for attende in attenders %}
       {% if 'DPS' in attende.anvandare.role and 'Shaman' in attende.anvandare.class  %}
-      <li>{{attende.anvandare.nick}} <em>{{attende.anvandare.class}} {{attende.narvaro == 'Kanske' ? '- kanske' : ''}}</em></li>
+      <li>{{attende.signup_number}}. {{attende.anvandare.nick}} <em>{{attende.anvandare.class}} {{attende.narvaro == 'Kanske' ? '- kanske' : ''}}</em></li>
       {% endif %}
       {% endfor %}
     </ul>
@@ -138,19 +138,19 @@
       <strong><li>Healers:</li></strong>
       {% for attende in attenders %}
       {% if 'Healer' in attende.anvandare.role and 'Druid' in attende.anvandare.class  %}
-      <li>{{attende.anvandare.nick}} <em>{{attende.anvandare.class}} {{attende.narvaro == 'Kanske' ? '- kanske' : ''}}</em></li>
+      <li>{{attende.signup_number}}. {{attende.anvandare.nick}} <em>{{attende.anvandare.class}} {{attende.narvaro == 'Kanske' ? '- kanske' : ''}}</em></li>
       {% endif %}
       {% endfor %}
 
       {% for attende in attenders %}
       {% if 'Healer' in attende.anvandare.role and 'Priest' in attende.anvandare.class  %}
-      <li>{{attende.anvandare.nick}} <em>{{attende.anvandare.class}} {{attende.narvaro == 'Kanske' ? '- kanske' : ''}}</em></li>
+      <li>{{attende.signup_number}}. {{attende.anvandare.nick}} <em>{{attende.anvandare.class}} {{attende.narvaro == 'Kanske' ? '- kanske' : ''}}</em></li>
       {% endif %}
       {% endfor %}
 
       {% for attende in attenders %}
       {% if 'Healer' in attende.anvandare.role and 'Shaman' in attende.anvandare.class  %}
-      <li>{{attende.anvandare.nick}} <em>{{attende.anvandare.class}} {{attende.narvaro == 'Kanske' ? '- kanske' : ''}}</em></li>
+      <li>{{attende.signup_number}}. {{attende.anvandare.nick}} <em>{{attende.anvandare.class}} {{attende.narvaro == 'Kanske' ? '- kanske' : ''}}</em></li>
       {% endif %}
       {% endfor %}
     </ul>

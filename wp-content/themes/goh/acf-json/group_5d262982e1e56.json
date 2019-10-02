@@ -57,6 +57,25 @@
                     "return_format": "object"
                 },
                 {
+                    "key": "field_5d925f29e9f10",
+                    "label": "Signup number",
+                    "name": "signup_number",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
                     "key": "field_5d8e5b1efa225",
                     "label": "Närvaro",
                     "name": "narvaro",
@@ -113,5 +132,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1569616536
+    "modified": 1569873928
 }

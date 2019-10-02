@@ -61,7 +61,14 @@ class SetRaidAttendance extends WP_AJAX
         'anvandare' => $user,
         'narvaro'   => $user_attendance,
       ];
-      add_row('attendance_list', $value, $raid_id);
+      $total_rows = add_row('attendance_list', $value, $raid_id);
+
+      $value = [
+        'anvandare'     => $user,
+        'narvaro'       => $user_attendance,
+        'signup_number' => $total_rows,
+      ];
+      update_row('attendance_list', (int)$total_rows, $value, $raid_id);
 
       $this->returnJSON(['message' => 'signed']);
     }
