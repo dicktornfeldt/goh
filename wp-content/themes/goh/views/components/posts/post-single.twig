@@ -9,19 +9,6 @@
       {# Article date #}
       <small class="ArticleSingle__date">{{ post.date }}</small>
 
-      {# Article featured image #}
-      {% if post.thumbnail.src %}
-        <figure class="ArticleSingle__figure">
-          <img class="ArticleSingle__img" src="{{ Image(post.thumbnail.src).src|resize(800) }}" />
-
-          {# If there is a caption #}
-          {% if post.thumbnail.caption %}
-          <figcaption class="ArticleSingle__caption">{{ post.thumbnail.caption }}</figcaption>
-          {% endif %}
-
-        </figure>
-      {% endif %}
-
       {# Article content #}
       {{ post.content }}
 
