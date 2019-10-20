@@ -50,92 +50,29 @@ class SendApplication extends WP_AJAX
     $post_id = wp_insert_post($args);
 
     if (! is_wp_error($post_id)) {
-      try {
-        /**
-        * Initiate curl request
-        *
-        * @param string $url_entity Part of API we want to communicate to
-        */
-        $curl = curl_init('https://discordapp.com/api/webhooks/607157238657712128/TTyIKojs4yqjAmrJU3ngFte5_6o-IZ0hkunccXBEMvGhXigzRixhYOWeIx3WK8LkL_h7');
+      $this->mailApplication($post_content);
 
-
-        /**
-         * @var array $options Header options for request
-         */
-        $options = [
-          'Content-Type: application/x-www-form-urlencoded',
-        ];
-
-
-        /**
-         * @var array $body
-         */
-        $body = [
-          'content' => $post_content,
-        ];
-
-
-        /**
-         * curl settings
-         */
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
-        curl_setopt($curl, CURLOPT_SSLVERSION, 6);
-        curl_setopt($curl, CURLOPT_HTTPHEADER, $options);
-        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'POST');
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($body));
-
-
-
-        /**
-         * @var string $response Encoded object
-         */
-        $response = curl_exec($curl);
-
-
-        /**
-         * @var string $error Returns the error message or '' (the empty string) if no error occurred.
-         */
-        $error = curl_error($curl);
-
-
-        /**
-         * closes the curl init
-         */
-        curl_close($curl);
-
-
-        /**
-         * if there was a curl error
-         */
-        if ($error) {
-          $this->returnJSON([
-            'message' => $error,
-            'status' => 400,
-          ]);
-        }
-
-
-        /**
-         * if no curl error, return response from request
-         */
-        $this->returnJSON([
-          'message' => 'success',
-          'status' => 200,
-        ]);
-      } catch (Exception $e) {
-        $this->returnJSON([
-          'message' => $e,
-          'status' => 400,
-        ]);
-      }
+      $this->returnJSON([
+        'message' => 'success',
+        'status' => 200,
+      ]);
     } else {
       $this->returnJSON([
         'message' => $post_id->get_error_message(),
         'status' => 400,
       ]);
     }
+  }
+
+
+  public function mailApplication(string $post_content)
+  {
+    $to      = 'dick.tornfeldt@gmail.com,gammalochhorde@gmail.com';
+    $subject = 'GOH - Guildansökning';
+    $headers = ['Content-Type: text/html; charset=UTF-8'];
+    $body    = $post_content;
+
+    wp_mail($to, $subject, $body, $headers);
   }
 }
 

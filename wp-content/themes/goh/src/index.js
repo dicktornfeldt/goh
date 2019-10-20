@@ -3,7 +3,7 @@ import "./style.scss";
 
 import Router from "./javascripts/util/Router";
 import common from "./javascripts/routes/common";
-import home from "./javascripts/routes/home";
+// import home from "./javascripts/routes/home";
 import roster from "./javascripts/routes/roster";
 import mittKonto from "./javascripts/routes/my-account";
 import raidschema from "./javascripts/routes/raid";
@@ -14,7 +14,6 @@ import raidschema from "./javascripts/routes/raid";
  */
 const routes = new Router({
   common,
-  home,
   roster,
   mittKonto,
   raidschema

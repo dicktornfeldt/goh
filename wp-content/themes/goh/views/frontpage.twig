@@ -10,45 +10,7 @@
       <p class="Preamble">15 år senare har gnistan återigen tänts. Efter kungörelsen av Vanillas återkomst startades en liten men varmblodig ambition att bygga ett kollektiv - ett hem - för Azeroths äldsta återvändare. Ett hem att trivas i. Ordet spred sig och kollektivet växte snabbt från att vara ett hem för vänner till något större. Från Ashenvales förtrollande skogar, till Blackrocks brinnande stäppar ska vi hjälpa varandra och frodas som en familj - och visa vilka som bestämmer i Azeroth. Vi är gamla... Och vi är hordea!</p>
     </div>
 
-    <button class="Button js-show-form">Är du också horde? Skicka en guildansökan!</button>
-
-    <div class="Hero__formblock">
-      <form class="Form ajax-send-application" action="#" method="post">
-        <input type="hidden" name="action" value="send_application">
-
-        <input name="user_nick" type="text" placeholder="Ditt nick" required>
-        <input name="user_email" type="email" placeholder="Din email" required>
-        <textarea rows="5" name="user_desc">Vem är du?</textarea>
-
-        <div class="Form__inputwrapper">
-          <label for="user_class">Vad är du för klass?</label>
-          <select name="user_class" required>
-            <option value="">--Välj din klass--</option>
-            <option value="Druid">Druid</option>
-            <option value="Hunter">Hunter</option>
-            <option value="Mage">Mage</option>
-            <option value="Rogue">Rogue</option>
-            <option value="Shaman">Shaman</option>
-            <option value="Priest">Priest</option>
-            <option value="Warlock">Warlock</option>
-            <option value="Warrior">Warrior</option>
-          </select>
-        </div>
-
-        <div class="Form__inputwrapper">
-          <label for="user_race">Vad är du för ras?</label>
-          <select name="user_race" required>
-            <option value="">--Välj din ras--</option>
-            <option value="Orc">Orc</option>
-            <option value="Troll">Troll</option>
-            <option value="Undead">Undead</option>
-            <option value="Tauren">Tauren</option>
-          </select>
-        </div>
-
-        <button type="submit" class="Button">Skicka ansökan</button>
-      </form>
-    </div>
+    <a href="{{ site.url }}/guildansokan" class="Button">Är du också horde? Skicka en guildansökan!</a>
   </article>
 
   <aside class="VideoBackground">

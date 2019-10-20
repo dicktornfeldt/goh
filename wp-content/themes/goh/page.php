@@ -39,6 +39,14 @@ if (is_page('mitt-konto')) {
 }
 
 
+// If page is application, use that twig template.
+if (is_page('guildansokan')) {
+  // Render my account twig template.
+  Timber::render('page-guildapplication.twig', $context);
+  exit;
+}
+
+
 // If page is my account, use that twig template.
 if (is_page('raidschema')) {
   if (! is_user_logged_in()) {
