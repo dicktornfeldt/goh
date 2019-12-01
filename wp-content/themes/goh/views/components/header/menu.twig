@@ -1,11 +1,12 @@
 <nav>
   <a href="/#news" class="js-anchorlink">Nyheter</a>
-  {% if user %}
+  <a href="{{ site.url }}/guildansokan">Ansökan</a>
+  {# {% if user %}
   <a href="{{ site.url }}/raidschema">Raid</a>
   {% else %}
-  <a href="{{ site.url }}/om">Om</a>
-  {% endif %}
+  {% endif %} #}
 
+  <a href="{{ site.url }}/om">Om</a>
 
   <a href="{{ site.url }}/roster">Roster</a>
   <a href="{{ site.url }}/forum">Forum</a>
