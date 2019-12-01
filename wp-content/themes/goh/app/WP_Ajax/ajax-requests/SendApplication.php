@@ -25,6 +25,7 @@ class SendApplication extends WP_AJAX
   {
     $user_nick  = filter_var($this->get('user_nick'), FILTER_SANITIZE_STRING);
     $user_email = filter_var($this->get('user_email'), FILTER_SANITIZE_STRING);
+    $discord_battlenet = filter_var($this->get('discord_battlenet'), FILTER_SANITIZE_STRING);
     $user_desc  = filter_var($this->get('user_desc'), FILTER_SANITIZE_STRING);
     $user_class = filter_var($this->get('user_class'), FILTER_SANITIZE_STRING);
     $user_race  = filter_var($this->get('user_race'), FILTER_SANITIZE_STRING);
@@ -38,7 +39,7 @@ class SendApplication extends WP_AJAX
       ]);
     }
 
-    $post_content = $user_nick .', '. $user_email .', '. $user_desc .', '. $user_class .', '. $user_race;
+    $post_content = "Nick: $user_nick, Mail: $user_email, Klass: $user_class, Ras: $user_race, Disc/Battlenet: $discord_battlenet Beskrivning: $user_desc,";
 
     $args = [
       'post_type' => 'Application',
