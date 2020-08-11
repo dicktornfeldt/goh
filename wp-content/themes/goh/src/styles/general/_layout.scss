@@ -29,6 +29,9 @@ main {
       line-height: 4rem;
     }
   }
+  &.full-width {
+    max-width: 100%;
+  }
 }
 
 .ContentSidebar {
