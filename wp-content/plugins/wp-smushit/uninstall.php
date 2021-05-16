@@ -3,22 +3,24 @@
  * Remove plugin settings data.
  *
  * @since 1.7
- * @package WP_Smush
+ * @package Smush
  */
+
+use Smush\Core\Settings;
 
 // If uninstall not called from WordPress exit.
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit();
 }
 
-if ( ! class_exists( 'WP_Smush_Settings' ) ) {
+if ( ! class_exists( '\\Smush\\Core\\Settings' ) ) {
 	if ( ! defined( 'WP_SMUSH_PREFIX' ) ) {
 		define( 'WP_SMUSH_PREFIX', 'wp-smush-' );
 	}
 	/* @noinspection PhpIncludeInspection */
-	include_once plugin_dir_path( __FILE__ ) . '/core/class-wp-smush-settings.php';
+	include_once plugin_dir_path( __FILE__ ) . '/core/class-settings.php';
 }
-$keep_data = WP_Smush_Settings::get_instance()->get( 'keep_data' );
+$keep_data = Settings::get_instance()->get( 'keep_data' );
 
 // Check if someone want to keep the stats and settings.
 if ( ( defined( 'WP_SMUSH_PRESERVE_STATS' ) && WP_SMUSH_PRESERVE_STATS ) || true === $keep_data ) {
@@ -28,12 +30,11 @@ if ( ( defined( 'WP_SMUSH_PRESERVE_STATS' ) && WP_SMUSH_PRESERVE_STATS ) || true
 global $wpdb;
 
 $smushit_keys = array(
-	'resize-sizes',
 	'resmush-list',
+	'nextgen-resmush-list',
 	'resize_sizes',
 	'transparent_png',
 	'image_sizes',
-	'nextgen-resmush-list',
 	'super_smushed',
 	'super_smushed_nextgen',
 	'settings_updated',
@@ -48,23 +49,27 @@ $smushit_keys = array(
 	'lazy_load',
 	'last_run_sync',
 	'networkwide',
+	'cron_update_running',
+	'hide-conflict-notice',
+	'show_upgrade_modal',
 );
 
 $db_keys = array(
 	'skip-smush-setup',
 	'smush_global_stats',
-	'smush-directory-path-hash-updated',
 );
 
 // Cache Keys.
-$cache_keys = array(
-	'smush_global_stats',
-);
-
 $cache_smush_group = array(
 	'exceeding_items',
+	'wp-smush-resize_count',
 	'wp-smush-resize_savings',
-	'pngjpg_savings',
+	'wp-smush-pngjpg_savings',
+	'wp-smush-smushed_ids',
+	'media_attachments',
+	'skipped_images',
+	'images_with_backups',
+	'wp-smush-dir_total_stats',
 );
 
 $cache_nextgen_group = array(
@@ -88,17 +93,15 @@ if ( ! is_multisite() ) {
 	}
 
 	// Delete Cache data.
-	foreach ( $cache_keys as $key ) {
-		wp_cache_delete( $key );
-	}
-
 	foreach ( $cache_smush_group as $s_key ) {
-		wp_cache_delete( $s_key, 'smush' );
+		wp_cache_delete( $s_key, 'wp-smush' );
 	}
 
 	foreach ( $cache_nextgen_group as $n_key ) {
 		wp_cache_delete( $n_key, 'nextgen' );
 	}
+
+	wp_cache_delete( 'get_image_sizes', 'smush_image_sizes' );
 }
 
 // Delete Directory Smush stats.
@@ -138,17 +141,15 @@ if ( is_multisite() ) {
 				}
 
 				// Delete Cache data.
-				foreach ( $cache_keys as $key ) {
-					wp_cache_delete( $key );
-				}
-
 				foreach ( $cache_smush_group as $s_key ) {
-					wp_cache_delete( $s_key, 'smush' );
+					wp_cache_delete( $s_key, 'wp-smush' );
 				}
 
 				foreach ( $cache_nextgen_group as $n_key ) {
 					wp_cache_delete( $n_key, 'nextgen' );
 				}
+
+				wp_cache_delete( 'get_image_sizes', 'smush_image_sizes' );
 			}
 			restore_current_blog();
 		}
@@ -166,6 +167,20 @@ $wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}smush_dir_images" );
 
 // Delete directory scan data.
 delete_option( 'wp-smush-scan-step' );
+
+// Delete all WebP images.
+global $wp_filesystem;
+if ( is_null( $wp_filesystem ) ) {
+	WP_Filesystem();
+}
+
+$upload_dir = wp_get_upload_dir();
+$webp_dir   = dirname( $upload_dir['basedir'] ) . '/smush-webp';
+$wp_filesystem->delete( $webp_dir, true );
+
+// Delete WebP test image.
+$webp_img = $upload_dir['basedir'] . '/smush-webp-test.png';
+$wp_filesystem->delete( $webp_img );
 
 // TODO: Add procedure to delete backup files
 // TODO: Update NextGen Metadata to remove Smush stats on plugin deletion.

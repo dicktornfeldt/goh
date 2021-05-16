@@ -18,14 +18,14 @@ class Yoast_Plugin_Conflict {
 	 *
 	 * @var array
 	 */
-	protected $plugins = array();
+	protected $plugins = [];
 
 	/**
 	 * All the current active plugins will be stored in this private var.
 	 *
 	 * @var array
 	 */
-	protected $all_active_plugins = array();
+	protected $all_active_plugins = [];
 
 	/**
 	 * After searching for active plugins that are in $this->plugins the active plugins will be stored in this
@@ -33,7 +33,7 @@ class Yoast_Plugin_Conflict {
 	 *
 	 * @var array
 	 */
-	protected $active_plugins = array();
+	protected $active_plugins = [];
 
 	/**
 	 * Property for holding instance of itself.
@@ -93,7 +93,7 @@ class Yoast_Plugin_Conflict {
 		static $sections_checked;
 
 		if ( $sections_checked === null ) {
-			$sections_checked = array();
+			$sections_checked = [];
 		}
 
 		if ( ! in_array( $plugin_section, $sections_checked, true ) ) {
@@ -124,9 +124,9 @@ class Yoast_Plugin_Conflict {
 		// Getting the active plugins by given section.
 		$plugins = $this->active_plugins[ $plugin_section ];
 
-		$plugin_names = array();
+		$plugin_names = [];
 		foreach ( $plugins as $plugin ) {
-			$name = WPSEO_Utils::get_plugin_name( $plugin );
+			$name = $this->get_plugin_name( $plugin );
 			if ( ! empty( $name ) ) {
 				$plugin_names[] = '<em>' . $name . '</em>';
 			}
@@ -165,7 +165,7 @@ class Yoast_Plugin_Conflict {
 		$inactive_sections = array_diff( $all_plugin_sections, $sections );
 		if ( ! empty( $inactive_sections ) ) {
 			foreach ( $inactive_sections as $section ) {
-				array_walk( $this->plugins[ $section ], array( $this, 'clear_error' ) );
+				array_walk( $this->plugins[ $section ], [ $this, 'clear_error' ] );
 			}
 		}
 
@@ -179,7 +179,7 @@ class Yoast_Plugin_Conflict {
 				$inactive_plugins = array_diff( $this->plugins[ $section ], $this->active_plugins[ $section ] );
 			}
 
-			array_walk( $inactive_plugins, array( $this, 'clear_error' ) );
+			array_walk( $inactive_plugins, [ $this, 'clear_error' ] );
 		}
 	}
 
@@ -195,7 +195,7 @@ class Yoast_Plugin_Conflict {
 
 		foreach ( $this->active_plugins[ $plugin_section ] as $plugin_file ) {
 
-			$plugin_name = WPSEO_Utils::get_plugin_name( $plugin_file );
+			$plugin_name = $this->get_plugin_name( $plugin_file );
 
 			$error_message = '';
 			/* translators: %1$s: 'Facebook & Open Graph' plugin name(s) of possibly conflicting plugin(s), %2$s to Yoast SEO */
@@ -203,7 +203,7 @@ class Yoast_Plugin_Conflict {
 			$error_message .= '<p>' . sprintf( $readable_plugin_section, 'Yoast SEO', $plugin_name ) . '</p>';
 
 			/* translators: %s: 'Facebook' plugin name of possibly conflicting plugin */
-			$error_message .= '<a class="button button-primary" href="' . wp_nonce_url( 'plugins.php?action=deactivate&amp;plugin=' . $plugin_file . '&amp;plugin_status=all', 'deactivate-plugin_' . $plugin_file ) . '">' . sprintf( __( 'Deactivate %s', 'wordpress-seo' ), WPSEO_Utils::get_plugin_name( $plugin_file ) ) . '</a> ';
+			$error_message .= '<a class="button button-primary" href="' . wp_nonce_url( 'plugins.php?action=deactivate&amp;plugin=' . $plugin_file . '&amp;plugin_status=all', 'deactivate-plugin_' . $plugin_file ) . '">' . sprintf( __( 'Deactivate %s', 'wordpress-seo' ), $this->get_plugin_name( $plugin_file ) ) . '</a> ';
 
 			$identifier = $this->get_notification_identifier( $plugin_file );
 
@@ -211,10 +211,10 @@ class Yoast_Plugin_Conflict {
 			$notification_center->add_notification(
 				new Yoast_Notification(
 					$error_message,
-					array(
+					[
 						'type' => Yoast_Notification::ERROR,
 						'id'   => 'wpseo-conflict-' . $identifier,
-					)
+					]
 				)
 			);
 		}
@@ -280,7 +280,7 @@ class Yoast_Plugin_Conflict {
 	protected function add_active_plugin( $plugin_section, $plugin ) {
 
 		if ( ! array_key_exists( $plugin_section, $this->active_plugins ) ) {
-			$this->active_plugins[ $plugin_section ] = array();
+			$this->active_plugins[ $plugin_section ] = [];
 		}
 
 		if ( ! in_array( $plugin, $this->active_plugins[ $plugin_section ], true ) ) {
@@ -304,6 +304,23 @@ class Yoast_Plugin_Conflict {
 				return $plugin_section;
 			}
 		}
+	}
+
+	/**
+	 * Get plugin name from file.
+	 *
+	 * @param string $plugin Plugin path relative to plugins directory.
+	 *
+	 * @return string|bool Plugin name or false when no name is set.
+	 */
+	protected function get_plugin_name( $plugin ) {
+		$plugin_details = get_plugin_data( WP_PLUGIN_DIR . '/' . $plugin );
+
+		if ( $plugin_details['Name'] !== '' ) {
+			return $plugin_details['Name'];
+		}
+
+		return false;
 	}
 
 	/**

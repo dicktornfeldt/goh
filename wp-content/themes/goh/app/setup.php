@@ -121,51 +121,8 @@ function add_to_context($context)
 {
   $context['primary_navigation'] = new Timber\Menu('primary_navigation');
   $context['post']               = new Timber\Post();
-  $context['current_user']       = new Timber\User();
 
   return $context;
-}
-
-
-/**
- * Changes the author base slug
- */
-add_action('init', 'author_base_slug');
-function author_base_slug()
-{
-  global $wp_rewrite;
-  $author_slug = 'pres'; // change slug name
-  $wp_rewrite->author_base = $author_slug;
-  $wp_rewrite->flush_rules();
-}
-
-
-/**
- * Remove unused user roles from user role dropdowns
- *
- * @return void
- */
-add_action('init', 'remove_unused_user_roles');
-function remove_unused_user_roles()
-{
-  remove_role('author');
-  remove_role('editor');
-  remove_role('wpseo_editor');
-  remove_role('wpseo_manager');
-  remove_role('contributor');
-}
-
-
-/**
- * Redirect non admins
- */
-add_action('init', 'blockusers_init');
-function blockusers_init()
-{
-  if (is_admin() && ! current_user_can('administrator') && ! (defined('DOING_AJAX') && DOING_AJAX)) {
-    wp_redirect(home_url());
-    exit;
-  }
 }
 
 

@@ -1,19 +1,5 @@
 <nav>
   <a href="/#news" class="js-anchorlink">Nyheter</a>
   <a href="{{ site.url }}/guildansokan">Ansökan</a>
-  {# {% if user %}
-  <a href="{{ site.url }}/raidschema">Raid</a>
-  {% else %}
-  {% endif %} #}
-
   <a href="{{ site.url }}/om">Om</a>
-
-
-  {% if user %}
-  <a href="{{ site.url }}/crafting">Crafting</a>
-  <a href="{{ site.url }}/mitt-konto">Profil</a>
-  <a href="{{ site.url }}/wp-login.php?action=logout" class="trigger-logout">Logga ut</a>
-  {% else %}
-  <a href="{{ site.url }}/login" class="trigger-login">Logga in</a>
-  {% endif %}
 </nav>
