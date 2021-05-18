@@ -12,7 +12,8 @@
   "dependencies": {
     "file-loader": "^3.0.1",
     "jquery": "^3.3.1",
-    "jquery-serializejson": "^2.9.0"
+    "jquery-serializejson": "^2.9.0",
+    "node-sass": "4.14.1"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",

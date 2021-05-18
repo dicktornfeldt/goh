@@ -1,0 +1,31 @@
+.merch .Page__wrapper {
+  max-width: 120rem;
+}
+
+.merch-list {
+  list-style: none;
+  text-align: center;
+  @media (min-width: $medium) {
+    margin: 4rem 0 0 0;
+  }
+  li {
+    margin: 2rem 0;
+    @media (min-width: $medium) {
+      display: inline-block;
+      width: 30%;
+      margin: 2rem 1%;
+    }
+    @media (min-width: $large) {
+      width: 22%;
+    }
+  }
+  img {
+    width: 100%;
+    height: auto;
+  }
+  a {
+    font-family: $font2;
+    color: $primary;
+    text-decoration: underline;
+  }
+}
