@@ -1,14 +1,20 @@
 {% extends 'base.twig' %}
 
 {% block main %}
-  <section class="Page__wrapper">
+  <section class="Page__wrapper" style="text-align: center;">
     <h1>Följ racet till 70</h1>
 
-    <!-- Add a placeholder for the Twitch embed -->
-    <div id="twitch-embed" style="margin: 0 0 3rem 0"></div>
+    <div class="container">
+      <h2><a href="https://www.twitch.tv/officialreine" target="_blank">Team Reine - twitch.tv/officialreine</a></h2>
+      <!-- Add a placeholder for the Twitch embed -->
+      <div id="twitch-embed" style="margin: 0 0 5rem 0"></div>
+    </div>
 
-    <!-- Add a placeholder for the Twitch embed -->
-    <div id="twitch-embed-2"></div>
+    <div class="container">
+      <!-- Add a placeholder for the Twitch embed -->
+      <h2><a href="https://www.twitch.tv/welfi" target="_blank">Team Drandor - twitch.tv/welfi</a></h2>
+      <div id="twitch-embed-2"></div>
+    </div>
 </section>
 
 <!-- Load the Twitch embed JavaScript file -->
@@ -18,12 +24,16 @@
 <script type="text/javascript">
   new Twitch.Embed("twitch-embed", {
     width: '100%',
-    channel: "sodapoppin",
+    height: 480,
+    muted: true,
+    channel: "officialreine",
   });
 
   new Twitch.Embed("twitch-embed-2", {
     width: '100%',
-    channel: "sodapoppin",
+    height: 480,
+    muted: true,
+    channel: "welfi",
   });
 </script>
 {% endblock %}

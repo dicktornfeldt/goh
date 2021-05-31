@@ -119,3 +119,23 @@ h2,
 h3 {
   font-weight: normal;
 }
+
+.race-to-70 {
+  .container {
+    @media (min-width: $widescreen) {
+      display: inline-block;
+      width: 80rem;
+      margin: 0 2rem;
+    }
+  }
+  h2 {
+    font-family: $font2;
+    margin: 0 0 0.5rem 0;
+  }
+}
+
+.race-to-70 .Page__wrapper {
+  @media (min-width: $widescreen) {
+    max-width: 170rem;
+  }
+}
