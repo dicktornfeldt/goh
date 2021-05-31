@@ -1,0 +1,29 @@
+{% extends 'base.twig' %}
+
+{% block main %}
+  <section class="Page__wrapper">
+    <h1>Följ racet till 70</h1>
+
+    <!-- Add a placeholder for the Twitch embed -->
+    <div id="twitch-embed" style="margin: 0 0 3rem 0"></div>
+
+    <!-- Add a placeholder for the Twitch embed -->
+    <div id="twitch-embed-2"></div>
+</section>
+
+<!-- Load the Twitch embed JavaScript file -->
+<script src="https://embed.twitch.tv/embed/v1.js"></script>
+
+<!-- Create a Twitch.Embed object that will render within the "twitch-embed" element -->
+<script type="text/javascript">
+  new Twitch.Embed("twitch-embed", {
+    width: '100%',
+    channel: "sodapoppin",
+  });
+
+  new Twitch.Embed("twitch-embed-2", {
+    width: '100%',
+    channel: "sodapoppin",
+  });
+</script>
+{% endblock %}

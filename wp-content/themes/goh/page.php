@@ -17,5 +17,12 @@ if (is_page('merch')) {
   exit;
 }
 
+// If page is application, use that twig template.
+if (is_page('race-to-70')) {
+  // Render my account twig template.
+  Timber::render('page-race.twig', $context);
+  exit;
+}
+
 // If not already rendered, use basic page twig template.
 Timber::render('page.twig', $context);
