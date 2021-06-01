@@ -124,7 +124,7 @@ h3 {
   .container {
     @media (min-width: $widescreen) {
       display: inline-block;
-      width: 80rem;
+      width: 56rem;
       margin: 0 2rem;
     }
   }
@@ -136,6 +136,6 @@ h3 {
 
 .race-to-70 .Page__wrapper {
   @media (min-width: $widescreen) {
-    max-width: 170rem;
+    max-width: 185rem;
   }
 }
