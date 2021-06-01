@@ -122,6 +122,7 @@ h3 {
 
 .race-to-70 {
   .container {
+    margin: 0 0 5rem 0;
     @media (min-width: $widescreen) {
       display: inline-block;
       width: 56rem;
