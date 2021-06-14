@@ -18,7 +18,7 @@ if (is_page('merch')) {
 }
 
 // If page is application, use that twig template.
-if (is_page('race-to-70')) {
+if (is_page('goh-pa-twitch')) {
   // Render my account twig template.
   Timber::render('page-race.twig', $context);
   exit;
